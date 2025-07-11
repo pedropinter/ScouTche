@@ -1,0 +1,19 @@
+@media screen and (max-width: 768px) {
+
+    header.bg-dark {
+        background-color: #00112f !important;
+    }
+
+    .nav {
+        color: #e2e2e2;
+        text-decoration: none;
+        font-size: 10.2px;
+    }
+
+    .nav img {
+        width: 10px;
+        height: auto;
+        margin-right: 8px;
+        vertical-align: middle;
+    }
+}

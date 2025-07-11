@@ -1,0 +1,36 @@
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+
+@Entity('evento')
+export class Evento{
+    @PrimaryGeneratedColumn()
+    id!: number;
+
+    @Column({type: "enum", enum: ['Amistoso', 'Peneira', 'Varzea'], nullable: false})
+    tipo: string //USAR CHECK
+
+    @Column({type: "varchar", length: 255, nullable: false})
+    nome: string
+
+    @Column({type: "varchar", length: 255})
+    desc: string    
+
+    @Column({type: "smallint", length: 255, nullable: false})
+    cep: number //USAR API PARA VERIFICAR
+
+    @Column({type: "enum", enum: ['Basquete', 'Futebol', 'Volei','Handebol'], nullable: false})
+    modalidade: string //USAR CHECK
+
+    
+   @ManyToOne(() => User, (user) => user.id)
+  userId:User;
+
+    //IDCLUBE E IDUSUARIO
+
+    constructor(tipo: string,nome: string,desc: string ,cep: number, modalidade: string){
+        this.tipo = tipo
+        this.nome = nome
+        this.desc = desc
+        this.cep = cep
+        this.modalidade = modalidade
+    }
+}

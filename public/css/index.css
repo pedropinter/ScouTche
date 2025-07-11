@@ -1,0 +1,308 @@
+/* Reset básico */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+}
+
+/* Header geral */
+header {
+  background: linear-gradient(90deg, #00112F, #003366);
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;            /* centraliza verticalmente */
+  justify-content: space-between; /* espaço entre logo, menu e perfil */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Link da logo */
+header a {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+header a img {
+  width: 60px;
+  height: 50px;
+  margin-right: 10px;
+  object-fit: contain;
+}
+
+/* Menu de navegação */
+.nav {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 5px;
+  flex-grow: 1;               /* ocupa espaço entre logo e perfil */
+  justify-content: flex-start;/* alinha itens à esquerda dentro do espaço */
+  align-items: center;        /* centraliza verticalmente */
+  margin-left: 10px;          /* distancia leve da logo */
+}
+
+/* Links do menu */
+.nav li a {
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;                  /* espaço entre ícone e texto */
+  transition: color 0.3s ease;
+}
+
+.nav li a:hover {
+  color: #5762ff;
+}
+
+/* Ícones dentro do menu */
+.nav img {
+  width: 20px;
+  height: auto;
+  vertical-align: middle;
+  pointer-events: none; /* evita interferir no clique do link */
+}
+
+/* Estilos para troca de ícones no hover */
+.icon-home:hover img {
+  content: url("https://i.postimg.cc/RZQvTPFh/image.png");
+}
+
+.icon-criar:hover img {
+  content: url("https://i.postimg.cc/ZnQkL5CF/image.png");
+}
+
+.icon-insc:hover img {
+  content: url("https://i.postimg.cc/qBnWP1fG/image.png");
+}
+
+.icon-desem:hover img {
+  content: url("https://i.postimg.cc/KvpjdchL/image.png");
+}
+
+/* Ícones ativos mantém imagem hover */
+.icon-home.ativo img {
+  content: url("https://i.postimg.cc/RZQvTPFh/image.png");
+}
+
+.icon-criar.ativo img {
+  content: url("https://i.postimg.cc/ZnQkL5CF/image.png");
+}
+
+.icon-insc.ativo img {
+  content: url("https://i.postimg.cc/qBnWP1fG/image.png");
+}
+
+.icon-desem.ativo img {
+  content: url("https://i.postimg.cc/KvpjdchL/image.png");
+}
+
+/* Estilização da foto do perfil */
+#profile-container img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid white;
+  transition: border-color 0.3s ease;
+}
+
+#profile-container img:hover {
+  border-color: #5762ff;
+}
+
+/* Busca e filtros (mantidos como pediu) */
+.busca-filtros {
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Campo de busca */
+.input-container {
+  position: relative;
+  width: 60%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.input-busca {
+  width: 100%;
+  padding: 0.8em 2.5em 0.8em 1em; /* espaço para o ícone à direita */
+  font-size: 1em;
+  border: none;
+  border-radius: 0.4em;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  color: #333;
+}
+
+.input-busca::placeholder {
+  color: #888;
+}
+
+.input-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: auto;
+  pointer-events: none; /* evita que clique na imagem afete o input */
+}
+
+/* Container dos filtros */
+.filtros {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+/* Cada dropdown de filtro */
+.filtro-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Botões de filtro */
+.filtro {
+  color: #696969;
+  background-color: #f9f9f9;
+  border: none;
+  border-radius: 0.4em;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* sombra de destaque */
+}
+
+/* Dropdown escondido por padrão */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 160px;
+  background: white;
+  border: none;  /* sem borda */
+  border-radius: 0.5em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* sombra ao invés de borda */
+  padding: 1em;
+  z-index: 100;
+}
+
+/* Quando o dropdown estiver ativo */
+.dropdown-content.show {
+  display: block;
+}
+
+/* Opções dentro do dropdown */
+.dropdown-item {
+  display: block;
+  width: 100%;
+  background: white;
+  border: none;
+  padding: 0.3em 0.5em;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 0.3em;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* sombra leve */
+}
+
+/* Hover nas opções */
+.dropdown-item:hover {
+  background-color: #f2f2f2;
+}
+
+/* Campos dentro do dropdown */
+.input-local,
+.select-cidade {
+  width: 100%;
+  padding: 0.4em 0.5em;
+  margin-bottom: 0.8em;
+  border: none;  /* sem borda */
+  border-radius: 0.3em;
+  font-size: 1em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* destaque por sombra */
+}
+
+/* Carrossel */
+
+.carousel-item {
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.5); 
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+}
+
+.slide1 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6)),
+  url('https://i.postimg.cc/KjnJQfP1/image.png');
+}
+
+.slide2 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6)),
+  url('https://i.postimg.cc/VkPKSxcX/image.png');
+}
+
+.slide3 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6)),
+  url('https://i.postimg.cc/rF0WNymh/image.png');
+}
+
+.btn-um {
+  color: black;
+  background-color: rgb(0, 128, 57);
+  border: 0;
+}
+
+.btn-um:hover {
+  background-color: rgb(0, 58, 26);
+}
+
+.btn-dois {
+  color: black;
+  background-color: #293dd3;
+}
+
+.btn-dois:hover {
+  background-color: #00112F;
+}
+
+.btn-tres {
+  color: black;
+  background-color: #ed8a33;
+}
+
+.btn-tres:hover {
+  background-color: rgb(152, 64, 0);
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/*descrição carrossel*/
+.info-eventos img {
+  width: 1.2em; /* cresce com o tamanho do texto */
+  height: auto;
+  margin-right: 8px;
+}
