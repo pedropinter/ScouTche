@@ -21,8 +21,8 @@ export class Evento{
     modalidade: string //USAR CHECK
 
     
-   @ManyToOne(() => User, (user) => user.id)
-  userId:User;
+   @ManyToOne(() => User, (user) => user.eventos,{ nullable: true })
+    user:User | null;
 
     //IDCLUBE E IDUSUARIO
 

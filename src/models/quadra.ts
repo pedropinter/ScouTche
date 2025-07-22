@@ -14,11 +14,10 @@ export class Quadra{
     @Column({type: "enum", enum: ['Basquete', 'Futebol', 'Volei','Handebol'], nullable: false})
     modalidade: string //USAR CHECK
 
-   @ManyToOne(() => User, (user) => user.id)
-  userId:User;
 
     //RELACIONAR CRIADO POR
-
+ @ManyToOne(() => User, (user) => user.quadas,{ nullable: true })
+    user:User|null;
 
     constructor(nome: string,cep: number, modalidade: string){
         this.nome = nome
