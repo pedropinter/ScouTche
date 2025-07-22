@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column,ManyToOne} from "typeorm";
+import { User } from "./User";
 
 @Entity('quadra')
 export class Quadra{
@@ -16,8 +17,8 @@ export class Quadra{
 
 
     //RELACIONAR CRIADO POR
- @ManyToOne(() => User, (user) => user.quadas,{ nullable: true })
-    user:User|null;
+ @ManyToOne(() => User, (user:User) => user.quadras,{ nullable: true })
+    user!:User|null;
 
     constructor(nome: string,cep: number, modalidade: string){
         this.nome = nome

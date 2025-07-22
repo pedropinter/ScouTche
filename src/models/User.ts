@@ -32,12 +32,12 @@ export class User {
   @Column({ type: 'varchar', length: 255, nullable: true })
   fotoPerfil?: string | null;
 
-   @OneToMany(() => Evento, evento => evento.user,{ nullable: true })
- eventos:Evento[];
+   @OneToMany(() => Evento, (evento:Evento) => evento.user,{ nullable: true })
+ eventos!:Evento[];
 
-   @OneToMany(() => Quadra, quadra => quadra.user,{ nullable: true })
- quadras:Quadra[];
-}
+   @OneToMany(() => Quadra, (quadra:Quadra) => quadra.user,{ nullable: true })
+ quadras!:Quadra[];
+
 
   private originalPassword!: string;
 
