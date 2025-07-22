@@ -1,4 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column,ManyToOne } from "typeorm";
+import { User } from "./User";
+
 @Entity('evento')
 export class Evento{
     @PrimaryGeneratedColumn()
@@ -20,17 +22,16 @@ export class Evento{
     modalidade: string //USAR CHECK
 
     
-   @ManyToOne(() => User, (user) => user.eventos,{ nullable: true })
-    user:User | null;
+    @ManyToOne(() => User, (user:User) => user.eventos,{ nullable: true })
+    user!:User|null;
 
     //IDCLUBE E IDUSUARIO
 
-    constructor(tipo: string,nome: string,desc: string ,cep: number, modalidade: string, user:User){
+    constructor(tipo: string,nome: string,desc: string ,cep: number, modalidade: string){
         this.tipo = tipo
         this.nome = nome
         this.desc = desc
         this.cep = cep
         this.modalidade = modalidade
-        this.user= user
     }
 }
