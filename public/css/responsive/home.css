@@ -54,8 +54,6 @@
         display: flex;
         gap: 1rem;
         flex-direction: column;
-        margin-left: 8%;
-        margin-top: 2%;
     }
 
     .btn-criar-seletiva {
@@ -72,7 +70,7 @@
     }
 
     main {
-        height: 80%;
+        height: 78%;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -91,20 +89,44 @@
         margin-top: 20px;
     }
 
-    header.bg-dark {
-        background-color: #00112f !important;
+
+    #nav.active {
+        display: flex !important;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1rem;
     }
 
-    .nav{
-        color: #e2e2e2;
-        text-decoration: none;
-        font-size: 10.2px;
+
+    #menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+        margin-left: 9px;
     }
 
-    .nav img {
-    width: 10px;
-    height: auto;
-    margin-right: 8px;
-    vertical-align: middle;
+
+    #nav {
+        display: none !important;
+    }
+
+
+    #botoes-login {
+        display: none !important;
+    }
+
+    .nav-link {
+        padding: 10px 0;
+        text-align: center;
+    }
 }
+
+.primeira {
+    height: 20%;
+}
+
+.icon-header {
+    width: 15px;
 }

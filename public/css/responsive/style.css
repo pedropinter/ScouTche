@@ -1,0 +1,131 @@
+@media screen and (max-width: 768px) {
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .form-control-dark {
+        border-color: var(--bs-gray);
+    }
+
+    .form-control-dark:focus {
+        border-color: #fff;
+        box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+    }
+
+    .text-small {
+        font-size: 85%;
+    }
+
+    .dropdown-toggle:not(:focus) {
+        outline: 0;
+    }
+
+    .btn-criar-seletiva {
+        background-color: #d9d9d9;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 16px;
+        font-size: 16px;
+        font-weight: 500px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        gap: 10px;
+        color: #454545;
+        width: 48%;
+    }
+
+    .btn-criar-seletiva:hover {
+        background-color: #92979e;
+    }
+
+    .btn-criar-seletiva img {
+        display: flex;
+        height: 15px;
+        width: 15px;
+        margin-top: 5px;
+    }
+
+    .criar-opcoes {
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+    }
+
+    .btn-criar-seletiva {
+        display: flex;
+
+    }
+
+    .telas {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 1.5rem;
+        width: 90%;
+        margin-left: 4%;
+    }
+
+    main {
+        height: 78%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .tela {
+        display: flex;
+        flex: 1;
+        background-color: #d9d9d9;
+        border: 8px solid #d9d9d9;
+        padding: 1rem;
+    }
+
+    #tituloH {
+        margin-top: 20px;
+    }
+
+
+    #nav.active {
+        display: flex !important;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+
+    #menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+    }
+
+
+    #nav {
+        display: none !important;
+    }
+
+
+    #botoes-login {
+        display: none !important;
+    }
+
+    .nav-link {
+        padding: 10px 0;
+        text-align: center;
+    }
+}
+
+.primeira {
+    height: 20%;
+}
+
+.icon-header {
+    width: 15px;
+}

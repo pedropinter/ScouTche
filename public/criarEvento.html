@@ -7,74 +7,104 @@
   <title>Criar evento</title>
 
   <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="./css/styleResponsive.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/responsive/style.css">
   <link rel="stylesheet" href="headers.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
+<body>
 
-  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-    <div class="col-md-3 mb-2 mb-md-0">
-      <a href="#" class="d-inline-flex align-items-center text-decoration-none">
-        <img src="https://i.postimg.cc/z3Z03Gwt/Chat-GPT-Image-18-de-jun-de-2025-21-56-18.png" alt="Logo" width="60" height="50" class="me-2" />
-        <span class="text-white fs-4">ScouTchê</span>
-      </a>
+  <header class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4">
+    <a href="#" class="d-inline-flex align-items-center text-decoration-none">
+      <img src="https://i.postimg.cc/z3Z03Gwt/Chat-GPT-Image-18-de-jun-de-2025-21-56-18.png" alt="Logo" width="60" height="50" class="me-2" />
+      <span class="text-white fs-4">ScouTchê</span>
+    </a>
+
+    <div class="flex-grow-1 d-none d-md-flex justify-content-center">
+      <nav class="nav-menu d-flex flex-row align-items-center gap-3" id="nav">
+        <a href="#" class="nav-link px-2 icon-home ativo">
+          <img class="icon-header" src="https://i.postimg.cc/Hx14CkmB/image.png" alt="icon-home" />Página Principal
+        </a>
+        <a href="./index.html" class="nav-link px-2 icon-criar ativo">
+          <img class="icon-header" src="https://i.postimg.cc/8Cnyq6PW/image.png" alt="icon-criar" />Criar Evento
+        </a>
+        <a href="./inscricoes.html" class="nav-link px-2 icon-insc ativo">
+          <img class="icon-header" src="https://i.postimg.cc/C50rh4GB/image.png" alt="icon-insc" />Inscrições
+        </a>
+        <a href="#" class="nav-link px-2 icon-desem ativo">
+          <img class="icon-header" src="https://i.postimg.cc/FHS39kZ3/image.png" alt="icon-desem" />Desempenho
+        </a>
+      </nav>
     </div>
 
-    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li><a href="#" class="nav-link px-2 icon-home ativo">
-          <img src="https://i.postimg.cc/Hx14CkmB/image.png" alt="icon-home" />Página Principal</a>
-      </li>
-      <li><a href="#" class="nav-link px-2 icon-criar ativo">
-          <img src="https://i.postimg.cc/8Cnyq6PW/image.png" alt="icon-criar" />Criar Evento</a>
-      </li>
-      <li><a href="#" class="nav-link px-2 icon-insc ativo">
-          <img src="https://i.postimg.cc/C50rh4GB/image.png" alt="icon-insc" />Inscrições</a>
-      </li>
-      <li><a href="#" class="nav-link px-2 icon-desem ativo">
-          <img src="https://i.postimg.cc/FHS39kZ3/image.png" alt="icon-desem" />Desempenho</a>
-      </li>
-    </ul>
-
-    <div class="col-md-3 text-end">
-      <button type="button" class="btn btn-outline-primary me-2" id="btn-login">Login</button>
-      <button type="button" class="btn btn-primary" id="btn-signup">Cadastre-se</button>
-
-    </div>
+    <button class="menu-toggle d-md-none btn text-white" data-bs-toggle="modal" data-bs-target="#menuModal">
+      &#9776;
+    </button>
   </header>
-<main>
-<section class="primeira">
-    <h5 id="tituloH">Olá, o que você acha de um novo jogo?</h5>
 
-    <div class="criar-opcoes">
-      <button class="btn-criar-seletiva">
-        <img src="./img/mais.png" alt="iconMais">
-        Criar Seletiva
-      </button>
-
-      <button class="btn-criar-seletiva">
-        <img src="./img/mais.png" alt="iconMais">
-        Criar Torneio
-      </button>
-
-      <button class="btn-criar-seletiva">
-        <img src="./img/mais.png" alt="iconMais">
-        Jogo Amador
-      </button>
+  <div class="modal fade" id="menuModal" tabindex="-1" aria-labelledby="menuModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-sm-down">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" id="menuModalLabel">Menu</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body d-flex flex-column gap-3 px-4">
+          <a href="./home.html" class="nav-link text-white d-flex align-items-center">
+            <img class="icon-header me-2" src="https://i.postimg.cc/Hx14CkmB/image.png" alt="icon-home" />
+            Página Principal
+          </a>
+          <a href="./index.html" class="nav-link text-white d-flex align-items-center">
+            <img class="icon-header me-2" src="https://i.postimg.cc/8Cnyq6PW/image.png" alt="icon-criar" />
+            Criar Evento
+          </a>
+          <a href="./inscricoes.html" class="nav-link text-white d-flex align-items-center">
+            <img class="icon-header me-2" src="https://i.postimg.cc/C50rh4GB/image.png" alt="icon-insc" />
+            Inscrições
+          </a>
+          <a href="#" class="nav-link text-white d-flex align-items-center">
+            <img class="icon-header me-2" src="https://i.postimg.cc/FHS39kZ3/image.png" alt="icon-desem" />
+            Desempenho
+          </a>
+        </div>
+      </div>
     </div>
-  </section>
-  <section class="segunda">
+  </div>
+
+  <main>
+    <section class="primeira">
+      <h5 id="tituloH">Olá, o que você acha de um novo jogo?</h5>
+
+      <div class="criar-opcoes">
+        <button class="btn-criar-seletiva">
+          <img src="./img/mais.png" alt="iconMais">
+          Criar Seletiva
+        </button>
+
+        <button class="btn-criar-seletiva">
+          <img src="./img/mais.png" alt="iconMais">
+          Criar Torneio
+        </button>
+
+        <button class="btn-criar-seletiva">
+          <img src="./img/mais.png" alt="iconMais">
+          Jogo Amador
+        </button>
+      </div>
+    </section>
+
+    <section class="segunda">
       <h5 id="tituloH">Ainda nessa semana</h5>
-    <div class="telas">
-      <section class="tela"></section>
-      <section class="tela"></section>
-      <section class="tela"></section>
-    </div>
-  </section>
-</main>
+      <div class="telas">
+        <section class="tela"></section>
+        <section class="tela"></section>
+        <section class="tela"></section>
+      </div>
+    </section>
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
-
+  <script src="./js/btnHamburguer.js"></script>
 </body>
 
 </html>
