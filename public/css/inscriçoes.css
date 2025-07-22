@@ -38,11 +38,25 @@ main {
     margin: auto;
 }
 
-h2 {
-    margin-bottom: 20px;
+#flex {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+
+
 }
 
+    h2{
+        display: flex;
+        justify-content: center;
+    }
+
 .card {
+    width: 250px;
+    height: 300px;
     display: flex;
     background: rgb(226, 216, 216);
     border-radius: 10px;
@@ -176,4 +190,48 @@ header {
 .icon-menu {
     width: 5%;
     height: 5%;
+}
+
+.icon-header{
+    width: 25px;
+}
+.modal-content {
+  background-color: #00112F;
+  color: white;
+  border-radius: 0;
+}
+
+.modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal-body a.nav-link {
+  color: white;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-body a.nav-link:last-child {
+  border-bottom: none;
+}
+
+.modal-body a.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  padding-left: 6px;
+}
+
+.modal-body .icon-header {
+  width: 20px;
+  height: 20px;
 }

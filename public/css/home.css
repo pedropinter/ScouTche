@@ -1,0 +1,333 @@
+/* Reset básico */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+}
+
+/* Header geral */
+header {
+  background: linear-gradient(90deg, #00112F, #003366);
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;            /* centraliza verticalmente */
+  justify-content: space-between; /* espaço entre logo, menu e perfil */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Link da logo */
+header a {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+header a img {
+  width: 60px;
+  height: 50px;
+  margin-right: 10px;
+  object-fit: contain;
+}
+
+.nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#Logo-H {
+    width: 7%;
+    height: 7%;
+}
+
+.icon-menu {
+    width: 5%;
+    height: 5%;
+}
+
+.icon-header{
+    width: 25px;
+}
+
+/* Estilos para troca de ícones no hover */
+.icon-home:hover img {
+  content: url("https://i.postimg.cc/RZQvTPFh/image.png");
+}
+
+.icon-criar:hover img {
+  content: url("https://i.postimg.cc/ZnQkL5CF/image.png");
+}
+
+.icon-insc:hover img {
+  content: url("https://i.postimg.cc/qBnWP1fG/image.png");
+}
+
+.icon-desem:hover img {
+  content: url("https://i.postimg.cc/KvpjdchL/image.png");
+}
+
+/* Ícones ativos mantém imagem hover */
+.icon-home.ativo img {
+  content: url("https://i.postimg.cc/RZQvTPFh/image.png");
+}
+
+.icon-criar.ativo img {
+  content: url("https://i.postimg.cc/ZnQkL5CF/image.png");
+}
+
+.icon-insc.ativo img {
+  content: url("https://i.postimg.cc/qBnWP1fG/image.png");
+}
+
+.icon-desem.ativo img {
+  content: url("https://i.postimg.cc/KvpjdchL/image.png");
+}
+
+/* Estilização da foto do perfil */
+#profile-container img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid white;
+  transition: border-color 0.3s ease;
+}
+
+#profile-container img:hover {
+  border-color: #5762ff;
+}
+
+/* Busca e filtros (mantidos como pediu) */
+.busca-filtros {
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Campo de busca */
+.input-container {
+  position: relative;
+  width: 60%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.input-busca {
+  width: 100%;
+  padding: 0.8em 2.5em 0.8em 1em; /* espaço para o ícone à direita */
+  font-size: 1em;
+  border: none;
+  border-radius: 0.4em;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  color: #333;
+}
+
+.input-busca::placeholder {
+  color: #888;
+}
+
+.input-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: auto;
+  pointer-events: none; /* evita que clique na imagem afete o input */
+}
+
+/* Container dos filtros */
+.filtros {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+/* Cada dropdown de filtro */
+.filtro-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Botões de filtro */
+.filtro {
+  color: #696969;
+  background-color: #f9f9f9;
+  border: none;
+  border-radius: 0.4em;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); 
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 160px;
+  background: white;
+  border: none; 
+  border-radius: 0.5em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 1em;
+  z-index: 100;
+}
+
+.dropdown-content.show {
+  display: block;
+}
+.dropdown-item {
+  display: block;
+  width: 100%;
+  background: white;
+  border: none;
+  padding: 0.3em 0.5em;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 0.3em;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item:hover {
+  background-color: #f2f2f2;
+}
+
+.input-local,
+.select-cidade {
+  width: 100%;
+  padding: 0.4em 0.5em;
+  margin-bottom: 0.8em;
+  border: none;  
+  border-radius: 0.3em;
+  font-size: 1em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); 
+}
+
+.carousel-item {
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.5); 
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+}
+
+.slide1 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6)),
+  url('https://i.postimg.cc/KjnJQfP1/image.png');
+}
+
+.slide2 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6)),
+  url('https://i.postimg.cc/VkPKSxcX/image.png');
+}
+
+.slide3 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6)),
+  url('https://i.postimg.cc/rF0WNymh/image.png');
+}
+
+.btn-um {
+  color: black;
+  background-color: rgb(0, 128, 57);
+  border: 0;
+}
+
+.btn-um:hover {
+  background-color: rgb(0, 58, 26);
+}
+
+.btn-dois {
+  color: black;
+  background-color: #293dd3;
+}
+
+.btn-dois:hover {
+  background-color: #00112F;
+}
+
+.btn-tres {
+  color: black;
+  background-color: #ed8a33;
+}
+
+.btn-tres:hover {
+  background-color: rgb(152, 64, 0);
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.info-eventos img {
+  width: 1.2em; 
+  height: auto;
+  margin-right: 8px;
+}
+
+
+.icon-menu {
+    width: 5%;
+    height: 5%;
+}
+
+.icon-header{
+    width: 25px;
+}
+
+.modal-content {
+  background-color: #00112F;
+  color: white;
+  border-radius: 0;
+}
+
+.modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal-body a.nav-link {
+  color: white;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-body a.nav-link:last-child {
+  border-bottom: none;
+}
+
+.modal-body a.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  padding-left: 6px;
+}
+
+.modal-body .icon-header {
+  width: 20px;
+  height: 20px;
+}
