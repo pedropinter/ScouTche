@@ -1,5 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
-
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
+import { User } from "./User";
 @Entity('evento')
 export class Evento{
     @PrimaryGeneratedColumn()
@@ -22,7 +22,7 @@ export class Evento{
 
     
    @ManyToOne(() => User, (user) => user.eventos,{ nullable: true })
-    user:User | null;
+    user!:User | null;
 
     //IDCLUBE E IDUSUARIO
 

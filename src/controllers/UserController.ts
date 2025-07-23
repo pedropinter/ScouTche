@@ -4,7 +4,7 @@ import { User } from '../models/User';
 import bcrypt from 'bcryptjs';
 import fs from 'fs';
 import path from 'path';
-import { UserRepository } from "../repositories/Userrepositorie"
+import { UserRepository } from "../repositories/UserRepositorie"
 import * as jwt from "jsonwebtoken";
 import * as dotenv from "dotenv";
 
@@ -16,18 +16,16 @@ if (!JWT_SECRET) {
   throw new Error("JWT_SECRET is not defined in the environment variables");
 }
 
-export const UserController = {
-  private readonly userRepo: UserRepository;
+const userRepo = new UserRepository();
 
-  constructor() {
-    this.userRepo = new UserRepository();
-  },
-      async logout(req: Request, res: Response) {
-    res.clearCookie("token", {
-      httpOnly: true,
-      secure: true,
-      sameSite: "lax",
-    });
+
+export const UserController = {
+        async logout(req: Request, res: Response) {
+      res.clearCookie("token", {
+        httpOnly: true,
+        secure: true,
+        sameSite: "lax",
+      });
 
     res.status(200).json({ message: "Logout successful" });
   },
@@ -90,7 +88,8 @@ export const UserController = {
         res.status(401).json({ mensagem: 'Senha incorreta.' });
         return
       }
-
+      const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET)
+      
       res.cookie("token", token, {
         httpOnly: true,
         secure: true,

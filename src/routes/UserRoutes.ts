@@ -2,6 +2,7 @@ import { Router } from 'express';
 import multer from 'multer';
 import path from 'path';
 import { UserController } from '../controllers/UserController';
+import { authenticateToken } from "../middlewares/auth-middleware";
 
 const router = Router();
 
@@ -21,12 +22,12 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Rotas
-router.post('/register', UserController.register);
-router.post('/login', UserController.login);
-router.put('/perfil/:id', UserController.atualizarPerfil);
-router.get('/perfil/:id', UserController.listarPerfil);
-router.post('/perfil/:id/foto', upload.single('foto'), UserController.uploadFoto);
-router.delete('/perfil/:id/foto', UserController.removerFoto);
+router.post('/register',authenticateToken, UserController.register);
+router.post('/login',authenticateToken, UserController.login);
+router.put('/perfil/:id', authenticateToken,UserController.atualizarPerfil);
+router.get('/perfil/:id',authenticateToken, UserController.listarPerfil);
+router.post('/perfil/:id/foto',authenticateToken, upload.single('foto'), UserController.uploadFoto);
+router.delete('/perfil/:id/foto',authenticateToken, UserController.removerFoto);
 
 
 export default router;
