@@ -1,6 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column,ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
 import { User } from "./User";
-
 @Entity('evento')
 export class Evento{
     @PrimaryGeneratedColumn()
@@ -22,8 +21,8 @@ export class Evento{
     modalidade: string //USAR CHECK
 
     
-    @ManyToOne(() => User, (user:User) => user.eventos,{ nullable: true })
-    user!:User|null;
+   @ManyToOne(() => User, (user) => user.eventos,{ nullable: true })
+    user!:User | null;
 
     //IDCLUBE E IDUSUARIO
 

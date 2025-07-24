@@ -39,21 +39,21 @@ export class User {
  quadras!:Quadra[];
 
 
-  private originalPassword!: string;
+ private originalPassword!: string;
 
-  @AfterLoad()
-  setOriginalPassword() {
-    this.originalPassword = this.senha;
-  }
+ @AfterLoad()
+ setOriginalPassword() {
+   this.originalPassword = this.senha;
+ }
 
-  @BeforeInsert()
-  @BeforeUpdate()
-  async hashPassword() {
-    // Se a senha foi modificada e não está hashada, gera o hash
-    if (this.senha !== this.originalPassword) {
-      if (!this.senha.startsWith('$2a$') && !this.senha.startsWith('$2b$') && !this.senha.startsWith('$2y$')) {
-        this.senha = await bcrypt.hash(this.senha, 10);
-      }
-    }
-  }
+ @BeforeInsert()
+ @BeforeUpdate()
+ async hashPassword() {
+   if (this.senha !== this.originalPassword) {
+     const isHashed=this.senha.startsWith('$2a$') ||this.senha.startsWith('$2b$') ||this.senha.startsWith('$2y$');
+     if (!isHashed) {
+       this.senha = await bcrypt.hash(this.senha, 10);
+     }
+   }
+ }
 }

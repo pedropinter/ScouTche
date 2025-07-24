@@ -7,14 +7,14 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./css/carousel.css" />
-  <link rel="stylesheet" href="./css/home.css">
+  <link rel="stylesheet" href="./css/home.css" />
   <link rel="stylesheet" href="./css/auth.css">
   <link rel="stylesheet" href="./css/homeResponsive.css">
 </head>
 <body>
 
 <header class="bg-dark text-white p-3 d-flex justify-content-between align-items-center">
-  <h1 class="fs-4 m-0">SkouTche</h1>
+  <h1 class="fs-4 m-0">Minha Plataforma</h1>
 
 <div class="flex-grow-1 d-none d-md-flex justify-content-center">
       <nav class="nav-menu d-flex flex-row align-items-center gap-3" id="nav">
@@ -33,11 +33,14 @@
       </nav>
     </div>
   <div class="d-flex align-items-center gap-2">
-    <div class="col-md-3 text-end">
-      <button type="button" class="btn btn-outline-primary me-2" id="btn-login">Login</button>
-      <button type="button" class="btn btn-primary" id="btn-signup">Cadastre-se</button>
+    <button id="btn-login" class="btn btn-outline-light btn-sm">Login</button>
+    <button id="btn-signup" class="btn btn-light btn-sm">Cadastrar</button>
 
-    </div>
+    <!-- Menu Mobile (ícone de menu para abrir modal lateral ou menu) -->
+    <button class="btn btn-outline-light btn-sm d-md-none" data-bs-toggle="modal" data-bs-target="#menuModal">
+      ☰
+    </button>
+  </div>
 </header>
 
 <div class="modal fade" id="menuModal" tabindex="-1" aria-labelledby="menuModalLabel" aria-hidden="true">

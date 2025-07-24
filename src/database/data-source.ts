@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm';
 import { User } from '../models/User';
-import { Evento } from '../models/Evento';
+import { Evento } from '../models/evento';
 import { Quadra } from '../models/quadra';
 import { Participar } from '../models/participar';
 
