@@ -104,7 +104,6 @@
         border: none;
         font-size: 28px;
         cursor: pointer;
-        margin-left: 9px;
     }
 
 
@@ -121,12 +120,11 @@
         padding: 10px 0;
         text-align: center;
     }
-}
-
-.primeira {
+    .primeira {
     height: 20%;
 }
 
 .icon-header {
     width: 15px;
+}
 }

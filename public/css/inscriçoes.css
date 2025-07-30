@@ -5,25 +5,7 @@ body {
     padding: 0;
 }
 
-.logo {
-    height: 40px;
-}
 
-nav {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-}
-
-nav a.active {
-    color: #8a5cff;
-    font-weight: bold;
-}
 
 .profile-icon {
     width: 40px;
@@ -49,10 +31,10 @@ main {
 
 }
 
-    h2{
-        display: flex;
-        justify-content: center;
-    }
+h2 {
+    display: flex;
+    justify-content: center;
+}
 
 .card {
     width: 250px;
@@ -192,47 +174,47 @@ header {
     height: 5%;
 }
 
-.icon-header{
+.icon-header {
     width: 25px;
 }
+
 .modal-content {
-  background-color: #00112F;
-  color: white;
-  border-radius: 0;
+    background-color: #00112F;
+    color: white;
+    border-radius: 0;
 }
 
 .modal-header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .modal-title {
-  font-size: 1.25rem;
-  font-weight: bold;
+    font-size: 1.25rem;
+    font-weight: bold;
 }
 
 .modal-body a.nav-link {
-  color: white;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 0;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .modal-body a.nav-link:last-child {
-  border-bottom: none;
+    border-bottom: none;
 }
 
 .modal-body a.nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 6px;
-  padding-left: 6px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    padding-left: 6px;
 }
 
 .modal-body .icon-header {
-  width: 20px;
-  height: 20px;
+    width: 20px;
+    height: 20px;
 }
-

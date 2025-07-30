@@ -6,53 +6,6 @@ html, body {
   background-color: #f0f2f5;
 }
 
-/* Header geral */
-header {
-  background: linear-gradient(90deg, #00112F, #003366);
-  color: white;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;            /* centraliza verticalmente */
-  justify-content: space-between; /* espaço entre logo, menu e perfil */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-/* Link da logo */
-header a {
-  display: flex;
-  align-items: center;
-  color: white;
-  text-decoration: none;
-  font-size: 1.3rem;
-  font-weight: 700;
-}
-
-header a img {
-  width: 60px;
-  height: 50px;
-  margin-right: 10px;
-  object-fit: contain;
-}
-
-.nav-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-
-#Logo-H {
-    width: 7%;
-    height: 7%;
-}
-
-.icon-menu {
-    width: 5%;
-    height: 5%;
-}
-
-.icon-header{
-    width: 25px;
-}
 
 /* Estilos para troca de ícones no hover */
 .icon-home:hover img {
@@ -84,9 +37,6 @@ header a img {
   content: url("https://i.postimg.cc/qBnWP1fG/image.png");
 }
 
-.icon-desem.ativo img {
-  content: url("https://i.postimg.cc/KvpjdchL/image.png");
-}
 
 /* Estilização da foto do perfil */
 #profile-container img {
@@ -167,9 +117,10 @@ header a img {
   font-size: 1em;
   display: flex;
   align-items: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* sombra de destaque */
 }
 
+/* Dropdown escondido por padrão */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -177,16 +128,19 @@ header a img {
   left: 0;
   min-width: 160px;
   background: white;
-  border: none; 
+  border: none;  /* sem borda */
   border-radius: 0.5em;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* sombra ao invés de borda */
   padding: 1em;
   z-index: 100;
 }
 
+/* Quando o dropdown estiver ativo */
 .dropdown-content.show {
   display: block;
 }
+
+/* Opções dentro do dropdown */
 .dropdown-item {
   display: block;
   width: 100%;
@@ -196,23 +150,27 @@ header a img {
   text-align: left;
   cursor: pointer;
   border-radius: 0.3em;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* sombra leve */
 }
 
+/* Hover nas opções */
 .dropdown-item:hover {
   background-color: #f2f2f2;
 }
 
+/* Campos dentro do dropdown */
 .input-local,
 .select-cidade {
   width: 100%;
   padding: 0.4em 0.5em;
   margin-bottom: 0.8em;
-  border: none;  
+  border: none;  /* sem borda */
   border-radius: 0.3em;
   font-size: 1em;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* destaque por sombra */
 }
+
+/* Carrossel */
 
 .carousel-item {
   height: 600px;
@@ -275,59 +233,9 @@ header a img {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+/*descrição carrossel*/
 .info-eventos img {
-  width: 1.2em; 
+  width: 1.2em; /* cresce com o tamanho do texto */
   height: auto;
   margin-right: 8px;
-}
-
-
-.icon-menu {
-    width: 5%;
-    height: 5%;
-}
-
-.icon-header{
-    width: 25px;
-}
-
-.modal-content {
-  background-color: #00112F;
-  color: white;
-  border-radius: 0;
-}
-
-.modal-header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.modal-title {
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-
-.modal-body a.nav-link {
-  color: white;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 0;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.modal-body a.nav-link:last-child {
-  border-bottom: none;
-}
-
-.modal-body a.nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 6px;
-  padding-left: 6px;
-}
-
-.modal-body .icon-header {
-  width: 20px;
-  height: 20px;
 }

@@ -1,0 +1,88 @@
+/* Reset básico */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+}
+
+/* Header geral */
+header {
+    background: linear-gradient(90deg, #00112F, #003366);
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    /* centraliza verticalmente */
+    justify-content: space-between;
+    /* espaço entre logo, menu e perfil */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Link da logo */
+header a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+header a img {
+    width: 60px;
+    height: 50px;
+    margin-right: 10px;
+    object-fit: contain;
+}
+
+/* Menu de navegação */
+.nav {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 5px;
+    flex-grow: 1;
+    /* ocupa espaço entre logo e perfil */
+    justify-content: flex-start;
+    /* alinha itens à esquerda dentro do espaço */
+    align-items: center;
+    /* centraliza verticalmente */
+    margin-left: 10px;
+    /* distancia leve da logo */
+}
+
+/* Links do menu */
+.nav li a {
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    /* espaço entre ícone e texto */
+    transition: color 0.3s ease;
+}
+
+.nav li a:hover {
+    color: #5762ff;
+}
+
+/* Ícones dentro do menu */
+.nav img {
+    width: 20px;
+    height: auto;
+    vertical-align: middle;
+    pointer-events: none;
+    /* evita interferir no clique do link */
+}
+
+header a img {
+    width: 60px;
+    height: 50px;
+    margin-right: 10px;
+    object-fit: contain;
+}
