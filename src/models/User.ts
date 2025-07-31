@@ -1,7 +1,8 @@
 import {Entity, PrimaryGeneratedColumn, Column, OneToMany, AfterLoad, BeforeInsert, BeforeUpdate,} from 'typeorm';
 import bcrypt from 'bcryptjs';
 import { Evento } from './evento';
-import { Quadra } from './quadra';
+
+import { Participar } from './participar';
 
 @Entity('users')
 export class User {
@@ -35,8 +36,10 @@ export class User {
    @OneToMany(() => Evento, (evento:Evento) => evento.user,{ nullable: true })
  eventos!:Evento[];
 
-   @OneToMany(() => Quadra, (quadra:Quadra) => quadra.user,{ nullable: true })
- quadras!:Quadra[];
+
+
+ @OneToMany(() => Participar, (participar:Participar) => participar.userId,{ nullable: true })
+ participar!:Participar[];
 
 
  private originalPassword!: string;

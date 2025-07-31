@@ -6,7 +6,8 @@ import fs from 'fs';
 import path from 'path';
 import { UserRepository } from "../repositories/UserRepositorie"
 import * as jwt from "jsonwebtoken";
-import * as dotenv from "dotenv";
+import "dotenv/config";
+
 
 const userRepository = AppDataSource.getRepository(User);
 
