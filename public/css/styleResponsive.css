@@ -121,12 +121,13 @@
         padding: 10px 0;
         text-align: center;
     }
-}
 
-.primeira {
-    height: 20%;
-}
+    .primeira {
+        height: 20%;
+    }
 
-.icon-header {
-    width: 15px;
+    .icon-header {
+        width: 15px;
+    }
+ 
 }
