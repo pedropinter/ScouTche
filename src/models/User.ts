@@ -20,6 +20,8 @@ export class User {
 
   @Column({ nullable: true })
   tipoConta!: string;
+ @Column({type:'int'})
+  avatar!:number
 
   @Column({ nullable: true })
   sobrenome?: string;
@@ -29,6 +31,8 @@ export class User {
 
   @Column({ nullable: true })
   bio?: string;
+
+ 
 
   @Column({ type: 'varchar', length: 255, nullable: true })
   fotoPerfil?: string | null;
