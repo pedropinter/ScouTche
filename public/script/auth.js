@@ -42,7 +42,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
   }
 
   try {
-    const resposta = await fetch('http://localhost:3000/api/usuarios/login', {
+    const resposta = await fetch('http://localhost:3000/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, senha }),
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      const resposta = await fetch('http://localhost:3000/api/usuarios/register', {
+      const resposta = await fetch('http://localhost:3000/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
           email,
           senha,
           confirmarSenha,
-          tipoConta: tipoSelecionado,
+          tipoConta: tipoSelecionado
         }),
       });
 
