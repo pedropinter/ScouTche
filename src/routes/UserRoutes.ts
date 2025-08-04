@@ -13,7 +13,7 @@ const router = Router();
 router.post('/register', UserController.register);
 router.post('/login', UserController.login);
 router.put('/perfil/:id', authenticateToken,UserController.atualizarPerfil);
-router.get('/perfil/:id',authenticateToken, UserController.listarPerfil);
+router.get('/get/perfil/:id',authenticateToken, UserController.listarPerfil);
 router.post('/perfil/:id/avatar',authenticateToken, UserController.uploadFoto);
 
 

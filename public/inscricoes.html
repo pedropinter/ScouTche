@@ -6,49 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inscrições</title>
     <link rel="stylesheet" href="./css/inscriçoes.css" />
-    <link rel="stylesheet" href="./css/inscricoesResponsive.css"/>
-    <link rel="stylesheet" href="./css/header.css"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="./css/inscricoesResponsive.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/headerResponsive.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 
 <body>
 
-    <header
-        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-        <div class="col-md-3 mb-2 mb-md-0">
-            <a href="home.html" class="d-inline-flex align-items-center text-decoration-none">
-                <img src="https://i.postimg.cc/z3Z03Gwt/Chat-GPT-Image-18-de-jun-de-2025-21-56-18.png" alt="Logo"
-                    width="60" height="50" class="me-2" />
-                <span class="text-white fs-4">ScouTchê</span>
-            </a>
-        </div>
-
-        <div class="flex-grow-1 d-none d-md-flex justify-content-center">
-            <nav class="nav-menu d-flex flex-row align-items-center gap-3" id="nav">
-                <a href="./home.html" class="nav-link px-2 icon-home ativo">
+    <header>
+        <a>
+            <img src="https://i.postimg.cc/z3Z03Gwt/Chat-GPT-Image-18-de-jun-de-2025-21-56-18.png" />
+            <span class="text-white fs-4">ScouTchê</span>
+        </a>
+        <div>
+            <nav id="nav">
+                <a href="./index.html">
                     <img class="icon-header" src="https://i.postimg.cc/Hx14CkmB/image.png" alt="icon-home" />Página
                     Principal
                 </a>
-                <a href="./criarEvento.html" class="nav-link px-2 icon-criar ativo">
+                <a href="./criarEvento.html">
                     <img class="icon-header" src="https://i.postimg.cc/8Cnyq6PW/image.png" alt="icon-criar" />Criar
                     Evento
                 </a>
-                <a href="./inscricoes.html" class="nav-link px-2 icon-insc ativo">
+                <a href="./inscricoes.html">
                     <img class="icon-header" src="https://i.postimg.cc/C50rh4GB/image.png" alt="icon-insc" />Inscrições
                 </a>
             </nav>
         </div>
 
-        <div class="col-md-3 text-end">
-            <a href="perfil.html" class="btn btn-outline-light me-2">Meu Perfil</a>
-            <a href="index.html" class="btn btn-danger">Sair</a>
+        <div id="profile-container">
+            <a href="perfil.html">
+                <img src="https://i.postimg.cc/gJg6vRMH/image.png" alt="Foto de perfil" />
+            </a>
+        </div>
         </div>
 
         <button class="menu-toggle d-md-none btn text-white" data-bs-toggle="modal" data-bs-target="#menuModal">
             &#9776;
         </button>
+
     </header>
+
 
     <div class="modal fade" id="menuModal" tabindex="-1" aria-labelledby="menuModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen-sm-down">
@@ -59,7 +58,7 @@
                         aria-label="Fechar"></button>
                 </div>
                 <div class="modal-body d-flex flex-column gap-3 px-4">
-                    <a href="./index.html" class="nav-link text-white d-flex align-items-center">
+                    <a href="./home.html" class="nav-link text-white d-flex align-items-center">
                         <img class="icon-header me-2" src="https://i.postimg.cc/Hx14CkmB/image.png" alt="icon-home" />
                         Página Principal
                     </a>
@@ -164,8 +163,7 @@
             </div>
         </div>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
-    <script src="./script/btnHamburguer.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

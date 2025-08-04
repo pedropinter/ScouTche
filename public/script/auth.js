@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
           email,
           senha,
           confirmarSenha,
-          tipoConta: tipoSelecionado
+          tipoConta: tipoSelecionado,
         }),
       });
 
