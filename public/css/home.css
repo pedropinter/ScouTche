@@ -7,52 +7,6 @@ html, body {
 }
 
 
-/* Estilos para troca de ícones no hover */
-.icon-home:hover img {
-  content: url("https://i.postimg.cc/RZQvTPFh/image.png");
-}
-
-.icon-criar:hover img {
-  content: url("https://i.postimg.cc/ZnQkL5CF/image.png");
-}
-
-.icon-insc:hover img {
-  content: url("https://i.postimg.cc/qBnWP1fG/image.png");
-}
-
-.icon-desem:hover img {
-  content: url("https://i.postimg.cc/KvpjdchL/image.png");
-}
-
-/* Ícones ativos mantém imagem hover */
-.icon-home.ativo img {
-  content: url("https://i.postimg.cc/RZQvTPFh/image.png");
-}
-
-.icon-criar.ativo img {
-  content: url("https://i.postimg.cc/ZnQkL5CF/image.png");
-}
-
-.icon-insc.ativo img {
-  content: url("https://i.postimg.cc/qBnWP1fG/image.png");
-}
-
-
-/* Estilização da foto do perfil */
-#profile-container img {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  cursor: pointer;
-  border: 2px solid white;
-  transition: border-color 0.3s ease;
-}
-
-#profile-container img:hover {
-  border-color: #5762ff;
-}
-
 /* Busca e filtros (mantidos como pediu) */
 .busca-filtros {
   padding: 2rem;

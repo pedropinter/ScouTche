@@ -1,68 +1,119 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Perfil - ScouTchê</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./css/header.css" />
+  <link rel="stylesheet" href="./css/btnHamburguer.css" />
+  <link rel="stylesheet" href="./css/headerResponsive.css" />
   <link rel="stylesheet" href="./css/perfil.css" />
 </head>
-<body>
-  
-<header class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4">
-  <a href="#" class="d-inline-flex align-items-center text-decoration-none">
-    <img src="https://i.postimg.cc/z3Z03Gwt/Chat-GPT-Image-18-de-jun-de-2025-21-56-18.png" alt="Logo" width="60" height="50" class="me-2" />
-    <span class="text-white fs-4">ScouTchê</span>
-  </a>
 
-  <div class="flex-grow-1 d-flex justify-content-center">
-    <nav class="nav-menu d-none d-md-flex flex-column flex-md-row align-items-start align-items-md-center gap-3 mt-3 mt-md-0" id="nav">
-      <a href="#" class="nav-link px-2 icon-home ativo">
-        <img class="icon-header" src="https://i.postimg.cc/Hx14CkmB/image.png" alt="icon-home" />Página Principal
-      </a>
-      <a href="./index.html" class="nav-link px-2 icon-criar ativo">
-        <img class="icon-header" src="https://i.postimg.cc/8Cnyq6PW/image.png" alt="icon-criar" />Criar Evento
-      </a>
-      <a href="./inscricoes.html" class="nav-link px-2 icon-insc ativo">
-        <img class="icon-header" src="https://i.postimg.cc/C50rh4GB/image.png" alt="icon-insc" />Inscrições
-      </a>
-      <a href="#" class="nav-link px-2 icon-desem ativo">
-        <img class="icon-header" src="https://i.postimg.cc/FHS39kZ3/image.png" alt="icon-desem" />Desempenho
-      </a>
-    </nav>
-  </div>
+<body>
+
+  <header>
+    <a>
+      <img src="https://i.postimg.cc/z3Z03Gwt/Chat-GPT-Image-18-de-jun-de-2025-21-56-18.png" />
+      <span class="text-white fs-4">ScouTchê</span>
+    </a>
+    <div>
+      <nav id="nav">
+        <a href="./home.html">
+          <img class="icon-header" src="https://i.postimg.cc/Hx14CkmB/image.png" alt="icon-home" />Página Principal
+        </a>
+        <a href="./criarEvento.html">
+          <img class="icon-header" src="https://i.postimg.cc/8Cnyq6PW/image.png" alt="icon-criar" />Criar Evento
+        </a>
+        <a href="./inscricoes.html">
+          <img class="icon-header" src="https://i.postimg.cc/C50rh4GB/image.png" alt="icon-insc" />Inscrições
+        </a>
+      </nav>
+    </div>
+
     <div id="profile-container">
       <a href="perfil.html">
         <img src="https://i.postimg.cc/gJg6vRMH/image.png" alt="Foto de perfil" />
       </a>
     </div>
+
+    <button class="menu-toggle d-md-none btn text-white" data-bs-toggle="modal" data-bs-target="#menuModal">
+      &#9776;
+    </button>
+
   </header>
 
   <main class="container perfil-container">
-    <section class="perfil-dados">
-      <div class="perfil-foto">
-        <img id="fotoPerfil" src="https://i.postimg.cc/gJg6vRMH/image.png" alt="Foto de perfil" />
-        <button id="btn-editar-foto" class="btn btn-outline-primary btn-sm mt-2">Editar Foto</button>
-        <button id="btn-remover-foto" class="btn btn-outline-danger btn-sm mt-2">Remover Foto</button>
+    <section class="perfil-dados d-flex gap-4">
+      <div class="perfil-foto text-center">
+        <img id="fotoPerfil" src="./img/futsal.png" alt="Foto de perfil"
+          style="width:160px; height:160px; border-radius:50%;" />
+        <button id="btnEscolherAvatar" class="btn btn-primary ">Escolher Avatar</button>
       </div>
 
       <div class="perfil-info">
-        <h2 id="nomeCompleto">Nome do Usuário</h2>
-
-        <p><strong>Data de Nascimento:</strong> <span id="nascimento">--/--/----</span></p>
-        <p><strong>Idade:</strong> <span id="idade">--</span></p>
-        <p><strong>Tipo de Conta:</strong> <span id="tipoConta">--</span></p>
-        <p><strong>Modalidade:</strong> <span id="modalidade">--</span></p>
-        <p><strong>Bio:</strong> <span id="bio">--</span></p>
-
+        <h2 id="nomePerfil">Nome do Usuário</h2>
+        <p><strong>Tipo de Conta:</strong> <span id="tipoContaPerfil">--</span></p>
+        <p><strong>Idade:</strong> <span id="idadePerfil">--</span></p>
+        <p><strong>Modalidade:</strong> <span id="modalidadePerfil">--</span></p>
+        <p><strong>Bio:</strong> <span id="bioPerfil">--</span></p>
         <button id="btn-editar-perfil" class="btn btn-primary mt-3">Editar Perfil</button>
-        <button id="btn-salvar-perfil" class="btn btn-success mt-3 d-none">Salvar Alterações</button>
-        <button id="btn-cancelar-edicao" class="btn btn-secondary mt-3 d-none">Cancelar</button>
       </div>
     </section>
   </main>
 
+  <div id="modalAvatar">
+    <div class="modal-content-avatar">
+      <button class="close-avatar">&times;</button>
+      <h2>Escolha seu Avatar</h2>
+      <div class="avatar-grid">
+        <img src="https://i.postimg.cc/gJg6vRMH/image.png" alt="avatar1" class="avatar-option" />
+        <img src="./img/futsal.png" alt="avatar2" class="avatar-option" />
+        <img src="./img/futsal.png" alt="avatar3" class="avatar-option" />
+        <img src="./img/basquete.png" alt="avatar4" class="avatar-option" />
+        <img src="./img/futsal.png" alt="avatar5" class="avatar-option" />
+        <img src="./img/futsal.png" alt="avatar6" class="avatar-option" />
+        <img src="./img/futsal.png" alt="avatar7" class="avatar-option" />
+        <img src="./img/futsal.png" alt="avatar8" class="avatar-option" />
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-editar-perfil" class="modal-custom d-none">
+    <div class="modal-content-custom">
+      <h2>Editar Perfil</h2>
+
+      <input type="text" id="editNome" placeholder="Nome completo" />
+
+      <input type="date" id="editNascimento" />
+
+      <select id="editModalidade">
+        <option value="">Selecione a modalidade</option>
+        <option value="Futebol">Futebol</option>
+        <option value="Vôlei">Vôlei</option>
+        <option value="Basquete">Basquete</option>
+        <option value="Futsal">Futsal</option>
+      </select>
+
+      <select id="editTipoConta">
+        <option value="">Selecione o tipo de conta</option>
+        <option value="Atleta">Atleta</option>
+        <option value="Olheiro">Olheiro</option>
+      </select>
+
+      <textarea id="editBio" placeholder="Bio"></textarea>
+
+      <div class="modal-btn-group">
+        <button id="salvarEdicaoPerfil" class="btn btn-primary">Salvar</button>
+        <button id="cancelarEdicaoPerfil" class="btn btn-secondary">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./script/perfil.js"></script>
 </body>
+
 </html>

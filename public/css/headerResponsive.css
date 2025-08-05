@@ -29,7 +29,16 @@
         margin-top: 1rem;
     }
 
-    
+
+    #menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+    }
+
+
     #nav {
         display: none !important;
     }
@@ -43,4 +52,6 @@
         padding: 10px 0;
         text-align: center;
     }
+
+    
 }

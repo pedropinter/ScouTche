@@ -1,31 +1,19 @@
-html,
-body {
-  width: 100%;
-  height: 100%;
+/* Reset básico */
+html, body {
   margin: 0;
   padding: 0;
-}
-
-#profile-container img {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  cursor: pointer;
-  border: 2px solid white;
-  transition: border-color 0.3s ease;
-}
-
-#profile-container img:hover {
-  border-color: #5762ff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
 }
 
 
+/* Busca e filtros (mantidos como pediu) */
 .busca-filtros {
   padding: 2rem;
   text-align: center;
 }
 
+/* Campo de busca */
 .input-container {
   position: relative;
   width: 60%;
@@ -35,7 +23,7 @@ body {
 
 .input-busca {
   width: 100%;
-  padding: 0.8em 2.5em 0.8em 1em;
+  padding: 0.8em 2.5em 0.8em 1em; /* espaço para o ícone à direita */
   font-size: 1em;
   border: none;
   border-radius: 0.4em;
@@ -54,9 +42,10 @@ body {
   transform: translateY(-50%);
   width: 20px;
   height: auto;
-  pointer-events: none;
+  pointer-events: none; /* evita que clique na imagem afete o input */
 }
 
+/* Container dos filtros */
 .filtros {
   margin-top: 1em;
   display: flex;
@@ -65,11 +54,13 @@ body {
   flex-wrap: wrap;
 }
 
+/* Cada dropdown de filtro */
 .filtro-dropdown {
   position: relative;
   display: inline-block;
 }
 
+/* Botões de filtro */
 .filtro {
   color: #696969;
   background-color: #f9f9f9;
@@ -80,9 +71,10 @@ body {
   font-size: 1em;
   display: flex;
   align-items: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* sombra de destaque */
 }
 
+/* Dropdown escondido por padrão */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -90,17 +82,19 @@ body {
   left: 0;
   min-width: 160px;
   background: white;
-  border: none;
+  border: none;  /* sem borda */
   border-radius: 0.5em;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* sombra ao invés de borda */
   padding: 1em;
   z-index: 100;
 }
 
+/* Quando o dropdown estiver ativo */
 .dropdown-content.show {
   display: block;
 }
 
+/* Opções dentro do dropdown */
 .dropdown-item {
   display: block;
   width: 100%;
@@ -110,23 +104,27 @@ body {
   text-align: left;
   cursor: pointer;
   border-radius: 0.3em;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* sombra leve */
 }
 
+/* Hover nas opções */
 .dropdown-item:hover {
   background-color: #f2f2f2;
 }
 
+/* Campos dentro do dropdown */
 .input-local,
 .select-cidade {
   width: 100%;
   padding: 0.4em 0.5em;
   margin-bottom: 0.8em;
-  border: none;
+  border: none;  /* sem borda */
   border-radius: 0.3em;
   font-size: 1em;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* destaque por sombra */
 }
+
+/* Carrossel */
 
 .carousel-item {
   height: 600px;
@@ -136,7 +134,7 @@ body {
 }
 
 .carousel-caption {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5); 
   padding: 20px;
   border-radius: 10px;
   color: white;
@@ -144,17 +142,17 @@ body {
 
 .slide1 {
   background-image: linear-gradient(rgba(0, 0, 0, 0.6)),
-    url('https://i.postimg.cc/KjnJQfP1/image.png');
+  url('https://i.postimg.cc/KjnJQfP1/image.png');
 }
 
 .slide2 {
   background-image: linear-gradient(rgba(0, 0, 0, 0.6)),
-    url('https://i.postimg.cc/VkPKSxcX/image.png');
+  url('https://i.postimg.cc/VkPKSxcX/image.png');
 }
 
 .slide3 {
   background-image: linear-gradient(rgba(0, 0, 0, 0.6)),
-    url('https://i.postimg.cc/rF0WNymh/image.png');
+  url('https://i.postimg.cc/rF0WNymh/image.png');
 }
 
 .btn-um {
@@ -189,8 +187,47 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+/*descrição carrossel*/
 .info-eventos img {
-  width: 1.2em;
+  width: 1.2em; /* cresce com o tamanho do texto */
   height: auto;
   margin-right: 8px;
+}
+
+.botoes-login {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+#btn-login {
+  background-color: transparent;
+  color: #0d6efd;
+  border: 1px solid #0d6efd;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+#btn-login:hover {
+  background-color: #0d6efd;
+  color: white;
+}
+
+#btn-signup {
+  background-color: #0d6efd;
+  color: white;
+  border: 1px solid #0d6efd;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+#btn-signup:hover {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
 }
