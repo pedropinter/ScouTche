@@ -1,4 +1,7 @@
+
+
 document.addEventListener("DOMContentLoaded", () => {
+    const fotoPerfil = document.getElementById("fotoPerfil");
   const usuario = JSON.parse(localStorage.getItem('usuarioDados'));
 
   const fotoPerfilHeader = document.querySelector('#profile-container img');
@@ -139,6 +142,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const avatarOptions = document.querySelectorAll(".avatar-option");
   const fotoPerfil = document.getElementById("fotoPerfil");
 
+  const token = localStorage.getItem("token");
+
   btnEscolherAvatar.addEventListener("click", () => {
     modalAvatar.style.display = "flex";
   });
@@ -154,66 +159,96 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   avatarOptions.forEach((img) => {
-    img.addEventListener("click", () => {
+    img.addEventListener("click", async () => {
+      const avatarSelecionado = img.src;
+
+      // Atualiza no localStorage
       const usuario = JSON.parse(localStorage.getItem("usuarioDados")) || {};
-      usuario.avatar = img.src;
+      usuario.avatar = avatarSelecionado;
       localStorage.setItem("usuarioDados", JSON.stringify(usuario));
-      fotoPerfil.src = img.src;
+
+      // Atualiza imagem no perfil
+      fotoPerfil.src = avatarSelecionado;
       modalAvatar.style.display = "none";
+
+      // Envia pro backend
+      try {
+            const userId = document.getElementById(id);
+        const resposta = await fetch(`http://localhost:3000/api/perfil/${userId}/avatar`, {
+          method: "PUT", 
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({ avatar: obterIndiceDaFoto(fotoPerfil.src) })
+        });
+
+        const resultado = await resposta.json();
+
+        if (resposta.ok) {
+          console.log("Avatar atualizado com sucesso no servidor!");
+        } else {
+          console.warn("Erro ao atualizar avatar no backend:", resultado.mensagem);
+        }
+      } catch (erro) {
+        console.error("Erro na requisição de avatar:", erro);
+      }
     });
   });
-
-
-  const usuarioSalvo = JSON.parse(localStorage.getItem("usuarioDados"));
-  if (usuarioSalvo?.avatar) {
-    fotoPerfil.src = usuarioSalvo.avatar;
-  }
 });
 
-async function carregarFoto() {
-  const foto = document.getElementById('fotokaka');
 
-  try {
-    const res = await fetch("http://localhost:3000/api/get/perfil/1"); // Troque 123 pelo ID real
-    if (res.ok) {
-      const data = await res.json(); // Extrai o JSON da resposta
-      const pers = Number(data.avatar); // Garante que seja um número
-
+async function carregarFoto(id) {
+    const foto = document.getElementById(id);
+const usuario = JSON.parse(localStorage.getItem('usuarioDados'));
+  const pers = Number(usuario.avatar); 
+ 
       switch (pers) {
         case 0:
-          foto.src = 'img/foto0.jpg';
+          foto.src = 'img/foto0.jpeg';
           break;
         case 1:
-          foto.src = 'img/foto1.jpg';
+          foto.src = 'img/foto1.jpeg';
           break;
         case 2:
-          foto.src = 'img/foto2.jpg';
+          foto.src = 'img/foto2.jpeg';
           break;
         case 3:
-          foto.src = 'img/foto3.jpg';
+          foto.src = 'img/foto3.jpeg';
           break;
         case 4:
-          foto.src = 'img/foto4.jpg';
+          foto.src = 'img/foto4.jpeg';
           break;
         case 5:
-          foto.src = 'img/foto5.jpg';
+          foto.src = 'img/foto5.jpeg';
           break;
         case 6:
-          foto.src = 'img/foto6.jpg';
+          foto.src = 'img/foto6.jpeg';
           break;
         case 7:
-          foto.src = 'img/foto7.jpg';
+          foto.src = 'img/foto7.jpeg';
           break;
       }
-    } else {
-      document.getElementById('mensagem').innerText = 'Erro ao carregar perfil.';
-    }
-  } catch (error) {
-    document.getElementById('mensagem').innerText = 'Erro na API: ' + error.message;
-  }
+      
+
+}
+
+function obterIndiceDaFoto(src) {
+  const fotos = [
+    'img/foto0.jpeg',
+    'img/foto1.jpeg',
+    'img/foto2.jpeg',
+    'img/foto3.jpeg',
+    'img/foto4.jpeg',
+    'img/foto5.jpeg',
+    'img/foto6.jpeg',
+    'img/foto7.jpeg',
+  ];
+
+  // Procura o índice correspondente
+  const indice = fotos.indexOf(src);
+  return indice !== -1 ? indice : null; // retorna null se não encontrar
 }
 
 
-
-
-
+carregarFoto("fotoPerfil")

@@ -51,12 +51,13 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     const resultado = await resposta.json();
 
     if (resposta.ok) {
-      alert('Login realizado com sucesso!');
+    alert('Login realizado com sucesso!');
 
-      // Salva status e dados do usuário no localStorage
-      localStorage.setItem('usuarioLogado', 'true');
-      localStorage.setItem('usuarioDados', JSON.stringify(resultado.usuario));
+    
+    localStorage.setItem('token', resultado.token);
 
+    localStorage.setItem('usuarioLogado', 'true');
+    localStorage.setItem('usuarioDados', JSON.stringify(resultado.usuario));
       closeModal();
 
       console.log('Login OK, redirecionando para home.html');
