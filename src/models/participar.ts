@@ -1,19 +1,26 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { User } from "./User";
+import { Evento } from "./evento";
 
 @Entity('participar')
-export class Participar{
-    @PrimaryGeneratedColumn()
-    id!: number;
+export class Participar {
+  @PrimaryGeneratedColumn()
+  id!: number;
 
-    @Column({type: "enum", enum: ['Inscrito', 'Selecionado', 'Rejeitado'], nullable: false})
-    status: string
+  @ManyToOne(() => User, (user: User) => user.participar, { nullable: true })
+  userId!: User | null;
 
-    @Column({type: "timestamp", nullable: false})
-    data: Date 
+  @ManyToOne(() => Evento, { nullable: true })
+  eventoId!: Evento | null;
 
-    //OneToMany
-    constructor(status: string, data: Date){
-        this.status = status
-        this.data = data
-    }
+
+  constructor(
+
+    user?: User | null,
+    evento?: Evento | null
+  ) {
+
+    this.userId = user ?? null;
+    this.eventoId = evento ?? null;
+  }
 }
