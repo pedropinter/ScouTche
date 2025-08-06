@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 
-<body>
+<body onload="carregarFoto()">
 
     <header>
         <a>
@@ -37,7 +37,7 @@
 
         <div id="profile-container">
             <a href="perfil.html">
-                <img src="https://i.postimg.cc/gJg6vRMH/image.png" alt="Foto de perfil" />
+                <img id="fotoP" src="" alt="Foto de perfil" />
             </a>
         </div>
         </div>
@@ -163,7 +163,9 @@
             </div>
         </div>
     </main>
+
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="./script/inscricoes.js"></script>
 </body>
 
 </html>

@@ -42,7 +42,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
   }
 
   try {
-    const resposta = await fetch('http://localhost:3000/api/usuarios/login', {
+    const resposta = await fetch('http://localhost:3000/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, senha }),
@@ -51,12 +51,12 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     const resultado = await resposta.json();
 
     if (resposta.ok) {
-      alert('Login realizado com sucesso!');
+    alert('Login realizado com sucesso!');
 
-      // Salva status e dados do usuário no localStorage
-      localStorage.setItem('usuarioLogado', 'true');
-      localStorage.setItem('usuarioDados', JSON.stringify(resultado.usuario));
-
+     localStorage.setItem('usuarioDados', JSON.stringify(resultado.usuario));
+    localStorage.setItem('token', resultado.token);
+    localStorage.setItem('usuarioLogado', 'true');
+   
       closeModal();
 
       console.log('Login OK, redirecionando para home.html');
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      const resposta = await fetch('http://localhost:3000/api/usuarios/register', {
+      const resposta = await fetch('http://localhost:3000/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

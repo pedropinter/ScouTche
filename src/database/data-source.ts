@@ -1,7 +1,7 @@
 import { DataSource } from 'typeorm';
 import { User } from '../models/User';
 import { Evento } from '../models/evento';
-import { Quadra } from '../models/quadra';
+
 import { Participar } from '../models/participar';
 
 
@@ -12,7 +12,7 @@ export const AppDataSource = new DataSource({
   username: 'root',
   password: 'root',
   database: 'scoutche',
-  entities: [User,Evento,Quadra,Participar],
+  entities: [User,Evento,Participar],
   synchronize: true,      // só use true para dev
   logging: false,
 });

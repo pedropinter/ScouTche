@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany} from "typeorm";
 import { User } from "./User";
+import { Participar } from "./participar";
 @Entity('evento')
 export class Evento{
     @PrimaryGeneratedColumn()
@@ -14,8 +15,8 @@ export class Evento{
     @Column({type: "varchar", length: 255})
     desc: string    
 
-    @Column({type: "smallint", length: 255, nullable: false})
-    cep: number //USAR API PARA VERIFICAR
+    @Column({ type: "varchar", length: 8 }) // ✅ CORRETO
+    cep: string;
 
     @Column({type: "enum", enum: ['Basquete', 'Futebol', 'Volei','Handebol'], nullable: false})
     modalidade: string //USAR CHECK
@@ -24,9 +25,12 @@ export class Evento{
    @ManyToOne(() => User, (user) => user.eventos,{ nullable: true })
     user!:User | null;
 
+    @OneToMany(() => Participar, (participar:Participar) => participar.eventoId,{ nullable: true })
+    participar!:Participar[];
+
     //IDCLUBE E IDUSUARIO
 
-    constructor(tipo: string,nome: string,desc: string ,cep: number, modalidade: string){
+    constructor(tipo: string,nome: string,desc: string ,cep: string, modalidade: string){
         this.tipo = tipo
         this.nome = nome
         this.desc = desc

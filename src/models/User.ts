@@ -1,7 +1,8 @@
 import {Entity, PrimaryGeneratedColumn, Column, OneToMany, AfterLoad, BeforeInsert, BeforeUpdate,} from 'typeorm';
 import bcrypt from 'bcryptjs';
 import { Evento } from './evento';
-import { Quadra } from './quadra';
+
+import { Participar } from './participar';
 
 @Entity('users')
 export class User {
@@ -19,6 +20,8 @@ export class User {
 
   @Column({ nullable: true })
   tipoConta!: string;
+ @Column({type:'int'})
+  avatar!:number
 
   @Column({ nullable: true })
   sobrenome?: string;
@@ -29,14 +32,18 @@ export class User {
   @Column({ nullable: true })
   bio?: string;
 
+ 
+
   @Column({ type: 'varchar', length: 255, nullable: true })
   fotoPerfil?: string | null;
 
    @OneToMany(() => Evento, (evento:Evento) => evento.user,{ nullable: true })
  eventos!:Evento[];
 
-   @OneToMany(() => Quadra, (quadra:Quadra) => quadra.user,{ nullable: true })
- quadras!:Quadra[];
+
+
+ @OneToMany(() => Participar, (participar:Participar) => participar.userId,{ nullable: true })
+ participar!:Participar[];
 
 
  private originalPassword!: string;

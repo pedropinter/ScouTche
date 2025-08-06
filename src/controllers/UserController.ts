@@ -6,7 +6,8 @@ import fs from 'fs';
 import path from 'path';
 import { UserRepository } from "../repositories/UserRepositorie"
 import * as jwt from "jsonwebtoken";
-import * as dotenv from "dotenv";
+import "dotenv/config";
+
 
 const userRepository = AppDataSource.getRepository(User);
 
@@ -54,7 +55,8 @@ export const UserController = {
         nome,
         email,
         senha: senhaCriptografada,
-        tipoConta
+        tipoConta,
+        avatar:0
       });
 
       await userRepository.save(novoUsuario);
@@ -141,29 +143,15 @@ export const UserController = {
 
   uploadFoto: async (req: Request, res: Response) => {
     try {
-      const { id } = req.params;
-      const file = req.file;
-
-      if (!file) {
-        res.status(400).json({ mensagem: 'Nenhuma imagem enviada.' });
-        return
-      }
-
-      const user = await userRepository.findOneBy({ id: Number(id) });
+      const { id} = req.params;
+      const { avatar} = req.body;
+   const user = await userRepository.findOneBy({ id: Number(id) });
       if (!user) {
         res.status(404).json({ mensagem: 'Usuário não encontrado.' });
         return
       }
+  user.avatar=avatar
 
-      // Apaga foto antiga se existir
-      if (user.fotoPerfil) {
-        const caminhoAntigo = path.join(__dirname, '../../uploads', user.fotoPerfil);
-        if (fs.existsSync(caminhoAntigo)) {
-          fs.unlinkSync(caminhoAntigo);
-        }
-      }
-
-      user.fotoPerfil = file.filename;
       await userRepository.save(user);
 
       res.status(200).json({ mensagem: 'Foto de perfil atualizada com sucesso!' });
@@ -175,32 +163,7 @@ export const UserController = {
     }
   },
 
-  removerFoto: async (req: Request, res: Response) => {
-    try {
-      const { id } = req.params;
 
-      const user = await userRepository.findOneBy({ id: Number(id) });
-      if (!user || !user.fotoPerfil) {
-        res.status(404).json({ mensagem: 'Foto não encontrada.' });
-        return
-      }
-
-      const caminho = path.join(__dirname, '../../uploads', user.fotoPerfil);
-      if (fs.existsSync(caminho)) {
-        fs.unlinkSync(caminho);
-      }
-
-      user.fotoPerfil = null;
-      await userRepository.save(user);
-
-      res.status(200).json({ mensagem: 'Foto removida com sucesso.' });
-      return
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ mensagem: 'Erro ao remover a foto.' });
-      return
-    }
-  },
 
   listarPerfil: async (req: Request, res: Response) => {
     try {
