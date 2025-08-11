@@ -205,7 +205,6 @@ async function carregarFoto() {
   const foto = document.getElementById('fotoP');
   const usuario = JSON.parse(localStorage.getItem('usuarioDados'));
   const fotoPerfil = document.getElementById("fotoPerfil");
- 
 
   let pers = Number(usuario.id);
 
@@ -274,3 +273,17 @@ function obterIndiceDaFoto(src) {
   return indice !== -1 ? indice : null; // retorna null se não encontrar
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const perfilHeader = document.getElementById("profile-container");
+
+  function ajustarPerfilHeader() {
+    if (window.innerWidth < 768) {
+      perfilHeader.style.display = "none";
+    } else {
+      perfilHeader.style.display = "block";
+    }
+  }
+
+  ajustarPerfilHeader();
+  window.addEventListener("resize", ajustarPerfilHeader);
+});

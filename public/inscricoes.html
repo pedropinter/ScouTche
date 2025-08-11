@@ -14,11 +14,14 @@
 
 <body onload="carregarFoto()">
 
+    
+<body onload="carregarFoto()">
     <header>
         <a>
             <img src="https://i.postimg.cc/z3Z03Gwt/Chat-GPT-Image-18-de-jun-de-2025-21-56-18.png" />
             <span class="text-white fs-4">ScouTchê</span>
         </a>
+
         <div>
             <nav id="nav">
                 <a href="./home.html">
@@ -35,19 +38,16 @@
             </nav>
         </div>
 
-        <div id="profile-container">
+        <div id="profile-container" class="d-none d-md-block">
             <a href="perfil.html">
                 <img id="fotoP" src="" alt="Foto de perfil" />
             </a>
-        </div>
         </div>
 
         <button class="menu-toggle d-md-none btn text-white" data-bs-toggle="modal" data-bs-target="#menuModal">
             &#9776;
         </button>
-
     </header>
-
 
     <div class="modal fade" id="menuModal" tabindex="-1" aria-labelledby="menuModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen-sm-down">
@@ -70,10 +70,15 @@
                         <img class="icon-header me-2" src="https://i.postimg.cc/C50rh4GB/image.png" alt="icon-insc" />
                         Inscrições
                     </a>
+                    <a href="perfil.html" class="nav-link text-white d-flex align-items-center d-md-none">
+                        <img id="fotoP" class="icon-header me-2" src="" alt="Foto de perfil" />
+                        Meu Perfil
+                    </a>
                 </div>
             </div>
         </div>
     </div>
+    
     <h2>Próximos Eventos</h2>
     <main>
         <div id="flex">

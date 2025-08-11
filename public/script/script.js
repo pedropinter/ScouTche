@@ -1,5 +1,5 @@
 // Ativa o link do menu
-const links = document.querySelectorAll('.nav-link');
+const links = document.querySelectorAll('header .nav-link');
 
 links.forEach(link => {
   link.addEventListener('click', (e) => {
