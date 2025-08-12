@@ -50,7 +50,8 @@
       <div class="perfil-foto text-center">
         <img id="fotoPerfil" src="./img/futsal.png" alt="Foto de perfil"
           style="width:160px; height:160px; border-radius:50%;" />
-        <button id="btnEscolherAvatar" class="btn btn-primary ">Escolher Avatar</button>
+          <button id="btnEscolherAvatar" class="btn-avatar">Escolher Avatar</button>
+        <button id="btnExcluirConta" class="btn-excluir">Excluir Conta</button>
       </div>
 
       <div class="perfil-info">
@@ -85,9 +86,9 @@
     <div class="modal-content-custom">
       <h2>Editar Perfil</h2>
 
-      <input type="text" id="editNome" placeholder="Nome completo" />
+      <label for="editNascimento" class="form-label">Selecione a sua data de nascimento:</label>
+      <input type="date" id="editNascimento" class="form-control" />
 
-      <input type="date" id="editNascimento" />
 
       <select id="editModalidade">
         <option value="">Selecione a modalidade</option>
@@ -95,12 +96,6 @@
         <option value="Vôlei">Vôlei</option>
         <option value="Basquete">Basquete</option>
         <option value="Futsal">Futsal</option>
-      </select>
-
-      <select id="editTipoConta">
-        <option value="">Selecione o tipo de conta</option>
-        <option value="Atleta">Atleta</option>
-        <option value="Olheiro">Olheiro</option>
       </select>
 
       <textarea id="editBio" placeholder="Bio"></textarea>
