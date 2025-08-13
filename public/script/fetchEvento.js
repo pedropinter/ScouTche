@@ -26,18 +26,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    async function criarEvento(form) {
-        const dados = {
-            tipo: form.tipo.value,
-            nome: form.nome.value,
-            desc: form.desc.value,
-            cep:form.cep.value,
-            modalidade: form.modalidade.value,
-        };
+    async function criarEvento(form, tipo) {
+      const dados = {
+          tipo: tipo,
+          nome: form.nome.value,
+          desc: form.desc.value,
+          cep: form.cep.value,
+          modalidade: form.modalidade.value,
+      };
         try {
   const res = await fetch(`http://localhost:3000/api/post/peneira`, {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: { "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")},
                 body: JSON.stringify(dados),
             });
             if (!res.ok) {
@@ -84,17 +85,35 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-
-    const modalSeletivaForm = document.querySelector("#modalSeletiva form");
+    const modalSeletivaForm = document.querySelector("#formSeletiva");
+    const modalTorneioForm = document.querySelector("#formTorneio");
+    const modalJogoForm = document.querySelector("#formJogo");
     if (modalSeletivaForm) {
-        modalSeletivaForm.addEventListener("submit", e => {
-            e.preventDefault();
-            criarEvento(modalSeletivaForm);
-            const modal = bootstrap.Modal.getInstance(document.getElementById("modalSeletiva"));
-            modal.hide();
-            modalSeletivaForm.reset();
-        });
-    }
+      modalSeletivaForm.addEventListener("submit", e => {
+          e.preventDefault();
+          criarEvento(modalSeletivaForm, "seletiva");
+          bootstrap.Modal.getInstance(document.getElementById("modalSeletiva")).hide();
+          modalSeletivaForm.reset();
+      });
+  }
+
+  if (modalTorneioForm) {
+      modalTorneioForm.addEventListener("submit", e => {
+          e.preventDefault();
+          criarEvento(modalTorneioForm, "torneio");
+          bootstrap.Modal.getInstance(document.getElementById("modalTorneio")).hide();
+          modalTorneioForm.reset();
+      });
+  }
+
+  if (modalJogoForm) {
+      modalJogoForm.addEventListener("submit", e => {
+          e.preventDefault();
+          criarEvento(modalJogoForm, "jogo");
+          bootstrap.Modal.getInstance(document.getElementById("modalJogo")).hide();
+          modalJogoForm.reset();
+      });
+  }
 
     telasContainer.addEventListener("click", async e => {
         const btn = e.target;

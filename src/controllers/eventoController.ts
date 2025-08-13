@@ -16,8 +16,9 @@ export class EventoController {
 
         // Pegando o tipo de conta do usuário autenticado
         const usuario = (req as any).user;
+        console.log(usuario)
         const tipoConta = usuario?.tipoConta?.toLowerCase();
-
+console.log(tipoConta)
         if (!tipoConta) {
             res.status(401).json({ message: "Usuário não autenticado" });
             return;
@@ -25,9 +26,9 @@ export class EventoController {
 
         // Regras de permissão por tipo de conta
         const permissoes: Record<string, string[]> = {
-            atleta: ["Jogo Amador"],
-            profissional: ["Torneio"],
-            clube: ["Torneio", "Peneira"]
+            atleta: ["jogo amador"],
+            profissional: ["torneio"],
+            clube: ["torneio", "peneira"]
         };
 
         // Verifica se o tipo de evento é permitido
