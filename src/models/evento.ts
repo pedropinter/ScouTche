@@ -18,11 +18,23 @@ export class Evento{
     @Column({ type: "varchar", length: 8 }) // ✅ CORRETO
     cep: string;
 
+    @Column()
+    logradouro!: string;
+
+    @Column()
+    bairro!: string;
+
+    @Column()
+    localidade!: string;
+
+    @Column()
+    uf!: string;
+
     @Column({type: "enum", enum: ['Basquete', 'Futebol', 'Volei','Handebol'], nullable: false})
     modalidade: string //USAR CHECK
 
     
-   @ManyToOne(() => User, (user) => user.eventos,{ nullable: true })
+   @ManyToOne(() => User    , (user) => user.eventos,{ nullable: true })
     user!:User | null;
 
     @OneToMany(() => Participar, (participar:Participar) => participar.eventoId,{ nullable: true })
