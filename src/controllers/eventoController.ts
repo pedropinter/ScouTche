@@ -14,19 +14,47 @@ export class EventoController {
     async create(req: Request, res: Response) {
         const { tipo, nome, desc, cep, modalidade } = req.body;
 
-        if (!nome || !cep || !modalidade) {
-            res.status(400).json({ message: "Todos os campos são necessários!" })
-            return
+        // Pegando o tipo de conta do usuário autenticado
+        const usuario = (req as any).user;
+        const tipoConta = usuario?.tipoConta?.toLowerCase();
+
+        if (!tipoConta) {
+            res.status(401).json({ message: "Usuário não autenticado" });
+            return;
         }
 
-        const Eventoo = new Evento(tipo,  nome, desc, cep, modalidade)
-        const newEvento = await eventoRepository.create(Eventoo)
-        await eventoRepository.save(newEvento)
+        // Regras de permissão por tipo de conta
+        const permissoes: Record<string, string[]> = {
+            atleta: ["Jogo Amador"],
+            profissional: ["Torneio"],
+            clube: ["Torneio", "Peneira"]
+        };
 
-        res.status(201).json({ message: "Evento Adicionada com Sucesso", evento: newEvento })
-        return
+        // Verifica se o tipo de evento é permitido
+        if (!permissoes[tipoConta] || !permissoes[tipoConta].includes(tipo)) {
+            res.status(403).json({
+                message: `Usuário do tipo '${tipoConta}' não pode criar evento do tipo '${tipo}'.`
+            });
+            return;
+        }
+
+        // Validação de campos obrigatórios
+        if (!nome || !cep || !modalidade) {
+            res.status(400).json({ message: "Todos os campos são necessários!" });
+            return;
+        }
+
+        // Criação do evento
+        const novoEvento = eventoRepository.create(new Evento(tipo, nome, desc, cep, modalidade));
+        await eventoRepository.save(novoEvento);
+
+        res.status(201).json({
+            message: "Evento criado com sucesso!",
+            evento: novoEvento
+        });
+        return;
     }
-
+    
     async show(req: Request, res: Response) {
         const { id } = req.params;
 

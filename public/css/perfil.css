@@ -72,15 +72,6 @@ body {
   background-color: #003d80;
 }
 
-#btn-remover-foto {
-  background-color: #dc3545;
-  color: white;
-}
-
-#btn-remover-foto:hover {
-  background-color: #b02a37;
-}
-
 /* Informações do perfil */
 .perfil-info {
   flex: 2 1 400px;
@@ -366,8 +357,43 @@ textarea {
   display: none; 
 }
 
-#btnEscolherAvatar{
+.btn-avatar {
   margin-top: 45px;
+
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  min-width: 140px; 
+  text-align: center;
+}
+
+.btn-avatar:hover {
+  background-color: #0056b3;
+}
+
+.btn-excluir {
+  margin-top: 8px;
+  width: 150px;
+  padding: 0.5rem 1rem;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-excluir:hover {
+  background-color: #b02a37;
+}
+
 }
 
 #btn-excluir-perfil {
@@ -386,3 +412,4 @@ textarea {
 #btn-excluir-perfil:hover {
   background-color: #b02a37;
 }
+
