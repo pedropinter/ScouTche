@@ -293,6 +293,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", ajustarPerfilHeader);
 });
 
+
 async function excluirConta() {
   const senhaDigitada = prompt('Digite sua senha para confirmar a exclusão da conta:');
 
@@ -511,3 +512,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+

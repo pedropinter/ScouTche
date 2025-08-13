@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="./css/btnHamburguer.css" />
   <link rel="stylesheet" href="./css/headerResponsive.css" />
   <link rel="stylesheet" href="./css/perfil.css" />
+  <link rel="stylesheet" href="./css/perfilResposive.css"/>
 </head>
 
 <body onload="carregarFoto()">
@@ -32,7 +33,6 @@
         </a>
       </nav>
     </div>
-
     <div id="profile-container">
       <a href="perfil.html">
         <img id="fotoP" src="" alt="Foto de perfil" />
@@ -42,16 +42,48 @@
     <button class="menu-toggle d-md-none btn text-white" data-bs-toggle="modal" data-bs-target="#menuModal">
       &#9776;
     </button>
-
   </header>
+
+  <!-- Modal do menu (mobile) -->
+  <div class="modal fade" id="menuModal" tabindex="-1" aria-labelledby="menuModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-sm-down">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" id="menuModalLabel">Menu</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body d-flex flex-column gap-3 px-4">
+          <a href="./home.html" class="nav-link text-white d-flex align-items-center">
+            <img class="icon-header me-2" src="https://i.postimg.cc/Hx14CkmB/image.png" alt="icon-home" />
+            Página Principal
+          </a>
+          <a href="./criarEvento.html" class="nav-link text-white d-flex align-items-center">
+            <img class="icon-header me-2" src="https://i.postimg.cc/8Cnyq6PW/image.png" alt="icon-criar" />
+            Criar Evento
+          </a>
+          <a href="./inscricoes.html" class="nav-link text-white d-flex align-items-center">
+            <img class="icon-header me-2" src="https://i.postimg.cc/C50rh4GB/image.png" alt="icon-insc" />
+            Inscrições
+          </a>
+          <!-- Ícone de perfil visível somente no mobile -->
+          <a href="perfil.html" class="nav-link text-white d-flex align-items-center d-md-none">
+            <img id="fotoPMobile" class="icon-header me-2" src="" alt="Foto de perfil" />
+            Meu Perfil
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main class="container perfil-container">
     <section class="perfil-dados d-flex gap-4">
       <div class="perfil-foto text-center">
+
         <img id="fotoPerfil" src="./img/futsal.png" alt="Foto de perfil"
           style="width:160px; height:160px; border-radius:50%;" />
           <button id="btnEscolherAvatar" class="btn-avatar">Escolher Avatar</button>
         <button id="btnExcluirConta" class="btn-excluir">Excluir Conta</button>
+
       </div>
 
       <div class="perfil-info">
@@ -86,9 +118,9 @@
     <div class="modal-content-custom">
       <h2>Editar Perfil</h2>
 
+
       <label for="editNascimento" class="form-label">Selecione a sua data de nascimento:</label>
       <input type="date" id="editNascimento" class="form-control" />
-
 
       <select id="editModalidade">
         <option value="">Selecione a modalidade</option>
