@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
     const telasContainer = document.querySelector(".telas");
-    const urlBase = "/peneira";
+
 
     async function carregarEventos() {
         try {
-            const res = await fetch(urlBase);
+            const res = await fetch(`http://localhost:3000/api/peneira`);
             if (!res.ok) throw new Error("Erro ao carregar eventos");
             const eventos = await res.json();
             telasContainer.innerHTML = "";
@@ -31,11 +31,11 @@ document.addEventListener("DOMContentLoaded", () => {
             tipo: form.tipo.value,
             nome: form.nome.value,
             desc: form.desc.value,
-            cep: Number(form.cep.value),
+            cep:form.cep.value,
             modalidade: form.modalidade.value,
         };
         try {
-            const res = await fetch(urlBase, {
+  const res = await fetch(`http://localhost:3000/api/post/peneira`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(dados),
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function atualizarEvento(id, dados) {
         try {
-            const res = await fetch(`${urlBase}/${id}`, {
+            const res = await fetch(`http://localhost:3000/api/put/peneira/${id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(dados),
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     async function deletarEvento(id) {
         if (!confirm("Tem certeza que deseja excluir este evento?")) return;
         try {
-            const res = await fetch(`${urlBase}/${id}`, { method: "DELETE" });
+            const res = await fetch(`http://localhost:3000/api/delete/peneira/${id}`, { method: "DELETE" });
             if (!res.ok) {
                 const err = await res.json();
                 throw new Error(err.message || "Erro ao excluir evento");
