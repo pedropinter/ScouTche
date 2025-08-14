@@ -14,6 +14,17 @@
 
 </head>
 
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1055">
+  <div id="alertPermissao" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        Apenas profissionais podem criar esse tipo de evento.
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Fechar"></button>
+    </div>
+  </div>
+</div>
+
 <body onload="carregarFoto()">
     <header>
         <a>
@@ -206,6 +217,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./script/btnHamburguer.js"></script>
     <script src="./script/fetchEvento.js"></script>
+    <script src="./script/eventPermission.js"></script>
 </body>
 
 </html>
