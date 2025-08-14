@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Selecionar avatar, salvar no localStorage e atualizar imagem
+
   avatarOptions.forEach((img) => {
     img.addEventListener('click', () => {
       const usuario = JSON.parse(localStorage.getItem('usuarioDados')) || {};
@@ -111,8 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function carregarFoto() {
   const foto = document.getElementById('fotoP');
-  const usuario = JSON.parse(localStorage.getItem('usuarioDados'));
- 
+  const usuario = JSON.parse(localStorage.getItem('usuarioDados'));  
 
   let pers = Number(usuario.id);
 

@@ -1,6 +1,30 @@
+function mostrarAlerta(mensagem, tipo = 'success') {
+  const alerta = document.getElementById('alertContainer');
+
+  alerta.innerHTML = `
+    <div class="alert alert-${tipo} alert-dismissible fade show text-center" role="alert">
+      ${mensagem}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+    </div>
+  `;
+
+  alerta.classList.remove('d-none');
+
+  setTimeout(() => {
+    const alertaAtivo = alerta.querySelector('.alert');
+    if (alertaAtivo) {
+      alertaAtivo.classList.remove('show');
+      setTimeout(() => alerta.classList.add('d-none'), 300);
+    }
+  }, 4000);
+}
+
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   carregarFoto("fotoPerfil");
-  carregarPerfil();  // preeche os dados do usuário no perfil
+  carregarPerfil();
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -332,7 +356,6 @@ async function excluirConta() {
   }
 }
 
-// Ligando a função ao botão:
 document.addEventListener('DOMContentLoaded', () => {
   const btnExcluirConta = document.getElementById('btnExcluirConta');
   if (btnExcluirConta) {
@@ -413,20 +436,16 @@ async function carregarPerfil() {
   }
 }
 
-// Exemplo: chamar a função no DOMContentLoaded para preencher o perfil na carga da página
 document.addEventListener('DOMContentLoaded', () => {
   carregarPerfil();
 });
 
-// Ligando a função ao botão:
 document.addEventListener('DOMContentLoaded', () => {
-  // Seleciona os elementos
   const btnEditarPerfil = document.getElementById('btn-editar-perfil');
   const modalEditarPerfil = document.getElementById('modal-editar-perfil');
   const btnCancelarEdicao = document.getElementById('cancelarEdicaoPerfil');
   const btnSalvarEdicao = document.getElementById('salvarEdicaoPerfil');
 
-  // Abrir modal e carregar dados para editar
   btnEditarPerfil.addEventListener('click', async () => {
     const usuario = JSON.parse(localStorage.getItem('usuarioDados'));
     const token = localStorage.getItem('token');
@@ -445,69 +464,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const dados = await res.json();
 
-      // Preencher somente os campos editáveis
       document.getElementById('editModalidade').value = dados.modalidade || '';
       document.getElementById('editBio').value = dados.bio || '';
 
-      // Mostrar modal
       modalEditarPerfil.classList.remove('d-none');
     } catch (error) {
       alert(error.message);
     }
   });
 
-  // Cancelar edição (fechar modal)
   btnCancelarEdicao.addEventListener('click', () => {
     modalEditarPerfil.classList.add('d-none');
   });
 
-  // Salvar edição
-  btnSalvarEdicao.addEventListener('click', async () => {
-    const modalidade = document.getElementById('editModalidade').value;
-    const bio = document.getElementById('editBio').value.trim();
+btnSalvarEdicao.addEventListener('click', async () => {
+  const modalidade = document.getElementById('editModalidade').value;
+  const bio = document.getElementById('editBio').value.trim();
 
-    if (!modalidade) {
-      alert('Por favor, selecione uma modalidade.');
-      return;
+  if (!modalidade) {
+    mostrarAlerta('Por favor, selecione uma modalidade.', 'warning');
+    return;
+  }
+
+  const usuario = JSON.parse(localStorage.getItem('usuarioDados'));
+  const token = localStorage.getItem('token');
+
+  if (!usuario || !token) {
+    mostrarAlerta('Usuário não autenticado', 'danger');
+    return;
+  }
+
+  try {
+    const resposta = await fetch(`http://localhost:3000/api/perfil/${usuario.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        modalidade,
+        bio
+      })
+    });
+
+    const data = await resposta.json();
+
+    if (resposta.ok) {
+      mostrarAlerta('Perfil atualizado com sucesso!', 'success');
+
+      document.getElementById('modalidadePerfil').textContent = modalidade;
+      document.getElementById('bioPerfil').textContent = bio;
+
+      modalEditarPerfil.classList.add('d-none');
+    } else {
+      mostrarAlerta(data.mensagem || 'Erro ao atualizar perfil.', 'danger');
     }
+  } catch (error) {
+    mostrarAlerta('Erro na comunicação com o servidor.', 'danger');
+    console.error('Erro:', error);
+  }
+});
 
-    const usuario = JSON.parse(localStorage.getItem('usuarioDados'));
-    const token = localStorage.getItem('token');
-
-    if (!usuario || !token) {
-      alert('Usuário não autenticado');
-      return;
-    }
-
-    try {
-      const resposta = await fetch(`http://localhost:3000/api/perfil/${usuario.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          modalidade,
-          bio
-        })
-      });
-
-      const data = await resposta.json();
-
-      if (resposta.ok) {
-        alert('Perfil atualizado com sucesso!');
-        // Atualiza o perfil na tela
-        document.getElementById('modalidadePerfil').textContent = modalidade;
-        document.getElementById('bioPerfil').textContent = bio;
-
-        // Fecha o modal de edição
-        modalEditarPerfil.classList.add('d-none');
-      } else {
-        alert(data.mensagem || 'Erro ao atualizar perfil.');
-      }
-    } catch (error) {
-      alert('Erro na comunicação com o servidor.');
-      console.error('Erro:', error);
-    }
-  });
 });

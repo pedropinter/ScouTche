@@ -45,12 +45,13 @@
 
   </header>
 
+
   <main class="container perfil-container">
     <section class="perfil-dados d-flex gap-4">
       <div class="perfil-foto text-center">
         <img id="fotoPerfil" src="./img/futsal.png" alt="Foto de perfil"
           style="width:160px; height:160px; border-radius:50%;" />
-          <button id="btnEscolherAvatar" class="btn-avatar">Escolher Avatar</button>
+        <button id="btnEscolherAvatar" class="btn-avatar">Escolher Avatar</button>
         <button id="btnExcluirConta" class="btn-excluir">Excluir Conta</button>
       </div>
 
@@ -99,7 +100,7 @@
       </select>
 
       <textarea id="editBio" placeholder="Bio"></textarea>
-
+      <div id="alertContainer" class="alert d-none" role="alert"></div>
       <div class="modal-btn-group">
         <button id="salvarEdicaoPerfil" class="btn btn-primary">Salvar</button>
         <button id="cancelarEdicaoPerfil" class="btn btn-secondary">Cancelar</button>

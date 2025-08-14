@@ -1,30 +1,40 @@
+function mostrarAlerta(mensagem, tipo = 'danger') {
+  const alerta = document.getElementById('alertContainer');
+  alerta.textContent = mensagem;
+  alerta.className = `alert alert-${tipo} mt-3 text-center`;
+  alerta.classList.remove('d-none');
+
+  setTimeout(() => {
+    alerta.classList.add('d-none');
+  }, 4000);
+}
+  
 document.addEventListener("DOMContentLoaded", () => {
     const telasContainer = document.querySelector(".telas");
 
-
-    async function carregarEventos() {
-        try {
-            const res = await fetch(`http://localhost:3000/api/peneira`);
-            if (!res.ok) throw new Error("Erro ao carregar eventos");
-            const eventos = await res.json();
-            telasContainer.innerHTML = "";
-            eventos.forEach(evento => {
-                const card = document.createElement("section");
-                card.classList.add("tela");
-                card.dataset.id = evento.id;
-                card.innerHTML = `
-          <h6>${evento.nome}</h6>
-          <p>Tipo: ${evento.tipo}</p>
-          <p>Modalidade: ${evento.modalidade}</p>
-          <button class="btn-editar">Editar</button>
-          <button class="btn-excluir">Excluir</button>
-        `;
-                telasContainer.appendChild(card);
-            });
-        } catch (error) {
-            alert(error.message);
-        }
-    }
+async function carregarEventos() {
+  try {
+    const res = await fetch(`http://localhost:3000/api/peneira`);
+    if (!res.ok) throw new Error("Erro ao carregar eventos");
+    const eventos = await res.json();
+    telasContainer.innerHTML = "";
+    eventos.forEach(evento => {
+      const card = document.createElement("section");
+      card.classList.add("tela");
+      card.dataset.id = evento.id;
+      card.innerHTML = `
+        <h6>${evento.nome}</h6>
+        <p>Tipo: ${evento.tipo}</p>
+        <p>Modalidade: ${evento.modalidade}</p>
+        <button class="btn-editar">Editar</button>
+        <button class="btn-excluir">Excluir</button>
+      `;
+      telasContainer.appendChild(card);
+    });
+  } catch (error) {
+    mostrarAlerta(error.message, 'danger');
+  }
+}
 
     async function criarEvento(form) {
         const dados = {
@@ -137,8 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
 async function carregarFoto() {
     const foto = document.getElementById('fotoP');
     const usuario = JSON.parse(localStorage.getItem('usuarioDados'));
- 
-   
+
   
     let pers = Number(usuario.id);
   
