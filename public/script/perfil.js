@@ -19,7 +19,23 @@ function mostrarAlerta(mensagem, tipo = 'success') {
   }, 4000);
 }
 
+function mostrarAlertaGlobal(mensagem, tipo = 'warning') {
+  const alerta = document.getElementById('alertGlobal');
+  alerta.innerHTML = mensagem;
+  alerta.className = `alert alert-${tipo} text-center`;
+  alerta.classList.remove('d-none');
 
+  setTimeout(() => {
+    alerta.classList.add('d-none');
+    alerta.innerHTML = '';
+  }, 5000);
+}
+
+document.getElementById('btnExcluirConta').addEventListener('click', () => {
+  const senhaInput = document.getElementById('senhaExclusao');
+  senhaInput.value = ''; 
+  new bootstrap.Modal(document.getElementById('modalExcluirConta')).show();
+});
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -193,7 +209,6 @@ document.addEventListener("DOMContentLoaded", () => {
     img.addEventListener("click", async () => {
       const avatarIndex = index; // índice direto da imagem clicada (0 a 7)
   
-      // Atualiza localStorage
       const usuario = JSON.parse(localStorage.getItem("usuarioDados")) || {};
       usuario.avatar = avatarIndex;
       localStorage.setItem("usuarioDados", JSON.stringify(usuario));
@@ -201,7 +216,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
       modalAvatar.style.display = "none";
   
-      // Envia pro backend
       try {
         const token = localStorage.getItem("token");
         const userId = usuario.id;
@@ -318,15 +332,18 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function excluirConta() {
-  const senhaDigitada = prompt('Digite sua senha para confirmar a exclusão da conta:');
+  const senhaDigitada = document.getElementById('senhaExclusao').value;
 
-  if (senhaDigitada === null) return; // Cancelou
+  if (!senhaDigitada) {
+    mostrarAlertaGlobal('Por favor, digite sua senha.', 'danger');
+    return;
+  }
 
   const usuario = JSON.parse(localStorage.getItem('usuarioDados'));
   const token = localStorage.getItem('token');
 
   if (!usuario || !token) {
-    alert('Usuário não autenticado.');
+    mostrarAlertaGlobal('Usuário não autenticado.', 'danger');
     return;
   }
 
@@ -343,15 +360,18 @@ async function excluirConta() {
     const data = await resposta.json();
 
     if (resposta.ok) {
-      alert('Conta excluída com sucesso!');
+      mostrarAlertaGlobal('Conta excluída com sucesso!', 'success');
       localStorage.removeItem('usuarioDados');
       localStorage.removeItem('token');
-      window.location.href = 'index.html';
+
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 2000);
     } else {
-      alert(data.mensagem || 'Erro ao excluir conta: senha incorreta.');
+      mostrarAlertaGlobal(data.mensagem || 'Erro ao excluir conta: senha incorreta.', 'danger');
     }
   } catch (error) {
-    alert('Erro na comunicação com o servidor.');
+    mostrarAlertaGlobal('Erro na comunicação com o servidor.', 'danger');
     console.error(error);
   }
 }
@@ -363,9 +383,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-
-
-// Função para converter data no formato BR (DD/MM/YYYY) para ISO (YYYY-MM-DD)
 function converterDataBRparaISO(dataBR) {
   const partes = dataBR.split('/');
   if (partes.length !== 3) return null;
@@ -373,7 +390,6 @@ function converterDataBRparaISO(dataBR) {
   return `${ano}-${mes.padStart(2, '0')}-${dia.padStart(2, '0')}`;
 }
 
-// Função que calcula idade a partir da data de nascimento
 function calcularIdade(dataNascimento) {
   if (!dataNascimento) return null;
 

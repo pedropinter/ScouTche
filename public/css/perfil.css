@@ -393,3 +393,80 @@ textarea {
   background-color: #b02a37;
 }
 
+.custom-modal {
+  border-radius: 12px;
+  border: 2px solid #0d0bb2;
+  background-color: #fff5f5;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.custom-modal-header {
+background: linear-gradient(90deg, #00112F, #003366);
+  color: white;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  padding: 1rem 1.5rem;
+}
+
+.custom-close {
+  filter: brightness(0) invert(1);
+}
+
+.custom-modal-body {
+  padding: 1.5rem;
+}
+
+.custom-modal-footer {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  background-color: #fff0f0;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.modal-label {
+  font-weight: 600;
+  color: #5c4c4e;
+}
+
+.modal-input {
+  border: 1px solid #aa8589;
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+
+.modal-input:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.cancel-btn {
+  background-color: #6c757d;
+  color: white;
+  border-radius: 6px;
+  padding: 6px 16px;
+  transition: 0.3s;
+}
+
+.cancel-btn:hover {
+  background-color: #5a6268;
+}
+
+.delete-btn {
+  background-color: #3f3fc2;
+  color: white;
+  border-radius: 6px;
+  padding: 6px 16px;
+  transition: 0.3s;
+}
+
+.delete-btn:hover {
+background-color: #2a2ac3;
+}
+
+.modal-text {
+  font-size: 1rem;
+  color: #333;
+}

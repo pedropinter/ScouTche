@@ -1,5 +1,4 @@
-// Ativa o link do menu
-const links = document.querySelectorAll('.nav-link');
+const links = document.querySelectorAll('header .nav-link');
 
 links.forEach(link => {
   link.addEventListener('click', (e) => {
@@ -9,7 +8,6 @@ links.forEach(link => {
   });
 });
 
-// Dropdowns
 document.querySelectorAll('.filtro').forEach(button => {
   button.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -33,7 +31,6 @@ document.querySelectorAll('.filtro').forEach(button => {
   });
 });
 
-// Fecha dropdown ao clicar fora
 document.addEventListener('click', (e) => {
   if (!e.target.closest('.filtro-dropdown')) {
     document.querySelectorAll('.filtro-dropdown').forEach(fd => {
@@ -43,7 +40,6 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Atualiza a descrição conforme o slide do carrossel
 const carousel = document.querySelector('#myCarousel');
 
 if (carousel) {
@@ -51,7 +47,6 @@ if (carousel) {
     const activeSlide = carousel.querySelector('.carousel-item.active');
     const index = Array.from(carousel.querySelectorAll('.carousel-item')).indexOf(activeSlide);
 
-    // Esconde tudo primeiro
     document.querySelector('#info-futsal').classList.add('d-none');
     document.querySelector('#info-volei').classList.add('d-none');
     document.querySelector('#info-basquete').classList.add('d-none');
