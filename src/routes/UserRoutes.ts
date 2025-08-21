@@ -1,7 +1,6 @@
 import { Router } from 'express';
 const bcrypt = require("bcrypt");
-import multer from 'multer';
-import path from 'path';
+
 import { UserController } from '../controllers/UserController';
 import { authenticateToken } from "../middlewares/auth-middleware";
 

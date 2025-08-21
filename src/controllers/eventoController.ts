@@ -12,7 +12,7 @@ export class EventoController {
     }
 
     async create(req: Request, res: Response) {
-        const { tipo, nome, desc, cep, modalidade } = req.body;
+        const { tipo, nome, desc, cep, modalidade, user } = req.body;
 
 
         // Validação de campos obrigatórios
@@ -22,7 +22,7 @@ export class EventoController {
         }
 
         // Criação do evento
-        const novoEvento = eventoRepository.create(new Evento(tipo, nome, desc, cep, modalidade));
+        const novoEvento = eventoRepository.create(new Evento(tipo, nome, desc, cep, modalidade, user));
         await eventoRepository.save(novoEvento);
 
         res.status(201).json({
@@ -48,7 +48,7 @@ export class EventoController {
 
     async update(req: Request, res: Response) {
         const { id } = req.params;
-        const { nome, cep, modalidade } = req.body;
+        const { nome, desc, cep, modalidade } = req.body;
 
         const evento = await eventoRepository.findOneBy({ id: Number(id) });
 
@@ -58,9 +58,10 @@ export class EventoController {
         }
 
         evento.nome = nome;
+        evento.desc=desc
         evento.cep = cep;
         evento.modalidade = modalidade;
-
+console.log("passou aqui")
         await eventoRepository.save(evento);
 
         res.json(evento);
