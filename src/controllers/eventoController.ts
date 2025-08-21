@@ -12,21 +12,26 @@ export class EventoController {
     }
 
     async create(req: Request, res: Response) {
-        const { tipo, nome, desc, cep, modalidade } = req.body;
+        const { tipo, nome, desc, cep, modalidade, user } = req.body;
 
+
+        // Validação de campos obrigatórios
         if (!nome || !cep || !modalidade) {
-            res.status(400).json({ message: "Todos os campos são necessários!" })
-            return
+            res.status(400).json({ message: "Todos os campos são necessários!" });
+            return;
         }
 
-        const Eventoo = new Evento(tipo,  nome, desc, cep, modalidade)
-        const newEvento = await eventoRepository.create(Eventoo)
-        await eventoRepository.save(newEvento)
+        // Criação do evento
+        const novoEvento = eventoRepository.create(new Evento(tipo, nome, desc, cep, modalidade, user));
+        await eventoRepository.save(novoEvento);
 
-        res.status(201).json({ message: "Evento Adicionada com Sucesso", evento: newEvento })
-        return
+        res.status(201).json({
+            message: "Evento criado com sucesso!",
+            evento: novoEvento
+        });
+        return;
     }
-
+    
     async show(req: Request, res: Response) {
         const { id } = req.params;
 
@@ -43,7 +48,7 @@ export class EventoController {
 
     async update(req: Request, res: Response) {
         const { id } = req.params;
-        const { nome, cep, modalidade } = req.body;
+        const { nome, desc, cep, modalidade } = req.body;
 
         const evento = await eventoRepository.findOneBy({ id: Number(id) });
 
@@ -53,9 +58,10 @@ export class EventoController {
         }
 
         evento.nome = nome;
+        evento.desc=desc
         evento.cep = cep;
         evento.modalidade = modalidade;
-
+console.log("passou aqui")
         await eventoRepository.save(evento);
 
         res.json(evento);

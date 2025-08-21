@@ -1,5 +1,4 @@
-// Ativa o link do menu
-const links = document.querySelectorAll('.nav-link');
+const links = document.querySelectorAll('header .nav-link');
 
 links.forEach(link => {
   link.addEventListener('click', (e) => {
@@ -9,7 +8,6 @@ links.forEach(link => {
   });
 });
 
-// Dropdowns
 document.querySelectorAll('.filtro').forEach(button => {
   button.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -33,7 +31,6 @@ document.querySelectorAll('.filtro').forEach(button => {
   });
 });
 
-// Fecha dropdown ao clicar fora
 document.addEventListener('click', (e) => {
   if (!e.target.closest('.filtro-dropdown')) {
     document.querySelectorAll('.filtro-dropdown').forEach(fd => {
@@ -43,7 +40,6 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Atualiza a descrição conforme o slide do carrossel
 const carousel = document.querySelector('#myCarousel');
 
 if (carousel) {
@@ -51,7 +47,6 @@ if (carousel) {
     const activeSlide = carousel.querySelector('.carousel-item.active');
     const index = Array.from(carousel.querySelectorAll('.carousel-item')).indexOf(activeSlide);
 
-    // Esconde tudo primeiro
     document.querySelector('#info-futsal').classList.add('d-none');
     document.querySelector('#info-volei').classList.add('d-none');
     document.querySelector('#info-basquete').classList.add('d-none');
@@ -66,7 +61,6 @@ if (carousel) {
   });
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
   const btnEscolherAvatar = document.getElementById('btnEscolherAvatar');
   const modalAvatar = document.getElementById('modalAvatar');
@@ -75,23 +69,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const fotoPerfil = document.getElementById('fotoPerfil');
 
   // Abrir modal avatar
-  btnEscolherAvatar.addEventListener('click', () => {
-    modalAvatar.classList.remove('d-none');
-  });
+  if (btnEscolherAvatar) {
+    btnEscolherAvatar.addEventListener('click', () => {
+      modalAvatar.classList.remove('d-none');
+    });
+  }
 
   // Fechar modal avatar ao clicar no botão X
-  closeAvatar.addEventListener('click', () => {
-    modalAvatar.classList.add('d-none');
-  });
+  if (closeAvatar) {
+    closeAvatar.addEventListener('click', () => {
+      modalAvatar.classList.add('d-none');
+    });
+  }
 
   // Fechar modal avatar ao clicar fora da caixa de conteúdo
-  modalAvatar.addEventListener('click', (e) => {
-    if (e.target === modalAvatar) {
-      modalAvatar.classList.add('d-none');
-    }
-  });
+  if (modalAvatar) {
+    modalAvatar.addEventListener('click', (e) => {
+      if (e.target === modalAvatar) {
+        modalAvatar.classList.add('d-none');
+      }
+    });
+  }
 
-  // Selecionar avatar, salvar no localStorage e atualizar imagem
   avatarOptions.forEach((img) => {
     img.addEventListener('click', () => {
       const usuario = JSON.parse(localStorage.getItem('usuarioDados')) || {};
@@ -107,20 +106,122 @@ document.addEventListener("DOMContentLoaded", () => {
   if (usuarioSalvo?.avatar) {
     fotoPerfil.src = usuarioSalvo.avatar;
   }
+
+  // 🚀 Chamar carregarEventos ao abrir a página
+  carregarEventos();
 });
 
+// Função para carregar eventos
+async function carregarEventos() {
+  try {
+    const res = await fetch(`http://localhost:3000/api/peneira`);
+    if (!res.ok) throw new Error("Erro ao carregar eventos");
+    const eventos = await res.json();
+
+    const row = document.querySelector(".container .row");
+    if (!row) {
+      console.error("Elemento .container .row não encontrado no HTML");
+      return;
+    }
+
+    row.innerHTML = ""; // limpar cards anteriores
+
+    eventos.forEach(evento => {
+      // Definir imagem de acordo com a modalidade
+      let imagem;
+      switch (evento.modalidade?.toLowerCase()) {
+        case "futebol":
+          imagem = "https://i.postimg.cc/KjnJQfP1/image.png";
+          break;
+        case "vôlei":
+          imagem = "https://i.postimg.cc/VkPKSxcX/image.png";
+          break;
+        case "basquete":
+          imagem = "https://i.postimg.cc/rF0WNymh/image.png";
+          break;
+        default:
+          imagem = "https://i.postimg.cc/t43d06TM/image.png"; // padrão
+          break;
+      }
+
+      const col = document.createElement("div");
+      col.classList.add("col-md-4");
+
+      col.innerHTML = `
+        <div class="card mb-4 box-shadow">
+          <img class="card-img-top" 
+               src="${imagem}" 
+               alt="Imagem do evento" 
+               style="height: 225px; width: 100%; display: block;">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">${evento.nome}</h5>
+            <p class="card-text">
+              <strong>Tipo:</strong> ${evento.tipo}<br>
+              <strong>Modalidade:</strong> ${evento.modalidade}<br>
+              <strong>Descrição:</strong> ${evento.desc}<br>
+              <strong>Cep:</strong> ${evento.cep}
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary btn-mais" data-id="${evento.id}">Mais Informações</button>
+                <button type="button" class="btn btn-primary btn-editar" data-id="${evento.id}">Entrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      row.appendChild(col);
+    });
+
+    // Adicionar eventos aos botões
+    document.querySelectorAll(".btn-mais").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.dataset.id;
+        console.log("Mais informações do evento:", id);
+        alert("Mais informações do evento " + id);
+      });
+    });
+
+    document.querySelectorAll(".btn-editar").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.dataset.id;
+        console.log("Entrar no evento:", id);
+        alert("Entrar no evento " + id);
+      });
+    });
+
+  } catch (err) {
+    console.error("Erro ao carregar eventos:", err);
+  }
+}
+async function buscarLogradouro(cep) {
+  try {
+    // Remove qualquer traço
+    const cepLimpo = cep.replace(/\D/g, "");
+    const res = await fetch(`https://viacep.com.br/ws/${cepLimpo}/json/`);
+    if (!res.ok) throw new Error("Erro ao consultar CEP");
+    const data = await res.json();
+    return data.logradouro || "Logradouro não encontrado";
+  } catch (err) {
+    console.error("Erro ViaCEP:", err);
+    return "Erro ao consultar CEP";
+  }
+}
+
+
+// Função para carregar foto do perfil
 async function carregarFoto() {
   const foto = document.getElementById('fotoP');
-  const usuario = JSON.parse(localStorage.getItem('usuarioDados'));
- 
+  const usuario = JSON.parse(localStorage.getItem('usuarioDados'));  
 
   let pers = Number(usuario.id);
 
   try {
-    const res = await fetch(`http://localhost:3000/api/get/perfil/${pers}`); // Troque 123 pelo ID real
+    const res = await fetch(`http://localhost:3000/api/get/perfil/${pers}`);
     if (res.ok) {
-      const data = await res.json(); // Extrai o JSON da resposta
-      const pers = Number(data.avatar); // Garante que seja um número
+      const data = await res.json();
+      const pers = Number(data.avatar);
 
       switch (pers) {
         case 1:
@@ -154,7 +255,6 @@ async function carregarFoto() {
         case 8:
           foto.src = 'img/foto7.jpeg';
           fotoPerfil.src = 'img/foto7.jpeg';
-        
           break;
         default:
           foto.src = 'https://i.postimg.cc/gJg6vRMH/image.png';

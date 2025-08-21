@@ -49,17 +49,18 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     });
 
     const resultado = await resposta.json();
-
+    console.log('teste resposta', );
     if (resposta.ok) {
     alert('Login realizado com sucesso!');
 
-     localStorage.setItem('usuarioDados', JSON.stringify(resultado.usuario));
-    localStorage.setItem('token', resultado.token);
+    localStorage.setItem('usuarioDados', JSON.stringify(resultado.usuario));
+    localStorage.setItem('token', resultado.token.token);
+    console.log('TESTE LOCAL', localStorage.getItem('token'));
     localStorage.setItem('usuarioLogado', 'true');
    
       closeModal();
 
-      console.log('Login OK, redirecionando para home.html');
+      console.log('Login OK, redirecionando para home');
       // Redireciona para a home após fechar modal
       window.location.href = 'home.html';
     } else {
