@@ -3,7 +3,6 @@ import { AppDataSource } from './database/data-source';
 import eventoRoutes from './routes/eventoRoutes'; 
 import UserRoutes from './routes/UserRoutes';
 
-
 import express, { Application, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
