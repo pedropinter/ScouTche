@@ -2,7 +2,7 @@
 import { AppDataSource } from './database/data-source';
 import eventoRoutes from './routes/eventoRoutes'; 
 import UserRoutes from './routes/UserRoutes';
-
+import  participarRoutes  from './routes/participarRoutes';
 
 import express, { Application, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
@@ -41,7 +41,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 app.get('/', (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, '../public/index.html'));
 });
-
+app.use('/api', participarRoutes);
 app.use('/api', UserRoutes);
 app.use('/api', eventoRoutes);
 
