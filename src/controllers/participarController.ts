@@ -87,4 +87,21 @@ export class participanteController {
       res.status(500).json({ message: "Erro interno ao sair do evento" });
     }
   }
+  async contarParticipantes(req: Request, res: Response) {
+  
+    const { eventoId } = req.params;
+
+    if (!eventoId) {
+      res.status(400).json({ message: "eventoId é obrigatório" });
+      return;
+    }
+
+    // Conta quantos registros de participação existem para esse evento
+    const total = await participantesRepository.count({
+      where: { eventoId: { id: Number(eventoId) } }
+    });
+
+    res.status(200).json({ eventoId, total });
+    return
+  } 
 }

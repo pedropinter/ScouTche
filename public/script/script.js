@@ -155,6 +155,7 @@ async function carregarEventos() {
             <p><strong>Tipo:</strong> ${evento.tipo}</p>
             <p><strong>Modalidade:</strong> ${evento.modalidade}</p>
             <p><strong>Local:</strong> ${evento.cep}</p>
+              <p><strong>Numero de participantes:</strong> ${ await obterTotalParticipantes(evento.id)}</p>
             <p><strong>Descrição:</strong> ${evento.desc || "Sem descrição"}</p>
           `;
 
@@ -169,7 +170,6 @@ async function carregarEventos() {
               alert("Você precisa estar logado para participar.");
             };
           } else {
-            // 🔥 Verificar participação (await!)
             const estaParticipando = await window.VerParticiparEvento(evento.id, usuario.id);
 
             if (estaParticipando) {
@@ -312,5 +312,16 @@ async function sairEvento(eventoId, userId) {
   } catch (error) {
     console.error("Erro sairEvento:", error);
     alert(error.message || "Erro ao sair do evento. Tente novamente.");
+  }
+}
+async function obterTotalParticipantes(eventoId) {
+  try {
+    const res = await fetch(`http://localhost:3000/api/participantes/count/${eventoId}`);
+    if (!res.ok) throw new Error("Erro ao buscar total de participantes");
+    const data = await res.json();
+    return data.total;
+  } catch (err) {
+    console.error(err);
+    return 0;
   }
 }
