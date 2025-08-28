@@ -9,7 +9,7 @@ const router = Router();
 
 
 
-// Rotas
+
 router.post('/register', UserController.register);
 router.post('/login', UserController.login);
 router.put('/perfil/:id', authenticateToken,UserController.atualizarPerfil);

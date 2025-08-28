@@ -96,7 +96,7 @@ export class participanteController {
       return;
     }
 
-    // Conta quantos registros de participação existem para esse evento
+   
     const total = await participantesRepository.count({
       where: { eventoId: { id: Number(eventoId) } }
     });
